@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day_week: MyString
+  hour: 2022-11-17 20:19:59
+  subsidiary: one
+
+two:
+  day_week: MyString
+  hour: 2022-11-17 20:19:59
+  subsidiary: two
