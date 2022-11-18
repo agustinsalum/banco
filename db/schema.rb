@@ -70,7 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_17_232045) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "role"
+    t.integer "role", default: 3
     t.bigint "subsidiary_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
