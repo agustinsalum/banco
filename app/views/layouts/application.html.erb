@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <%= stylesheet_link_tag "diseño_login" %>
   <head>
     <title>Banco</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,8 +12,7 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="cabecera">
     <%= link_to "dashboard", sessions_dashboard_path %>
     <%= link_to "Home", root_path %>
     <% if current_user %>
@@ -20,6 +20,11 @@
       <%= button_to "Cerrar sesion", destroy_user_session_path, method: :delete, data: { turbo:false } %>
     <% else %>
     <% end %>
+    </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    
     
     <%= yield %>
   </body>
