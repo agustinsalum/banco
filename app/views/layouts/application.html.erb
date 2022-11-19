@@ -13,10 +13,14 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <%= link_to "dashboard", sessions_dashboard_path %>
+    <%= link_to "Home", root_path %>
     <% if current_user %>
-      <%= current_user.email %>
+      <p>Bienvenido <%= current_user.name %> </p>
       <%= button_to "Cerrar sesion", destroy_user_session_path, method: :delete, data: { turbo:false } %>
+    <% else %>
     <% end %>
+    
     <%= yield %>
   </body>
 </html>

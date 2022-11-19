@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  get 'sessions/landing_page'
+  get 'sessions/dashboard'
   devise_for :users
-  root to: "home#index"
+  root 'sessions#landing_page'
+  get 'dashboard', to: 'home#dashboard'
 end
