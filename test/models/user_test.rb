@@ -1,6 +1,9 @@
 require "test_helper"
 require 'bcrypt'
 
+
+# El rol por defecto es 3(cliente)
+# No es posible probar la contraseña
 class UserTest < ActiveSupport::TestCase
   def setup
     una_provincia = Province.new(name_province: 'Buenos aires')
@@ -9,13 +12,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_valido
-    un_usuario_valido = User.new(email: 'agustinsalum@gmail.com', password: BCrypt::Password.create("my password"), password_confirmation: 'my password' , name: 'Agustin', role: 3, subsidiary: @una_sucursal)
+    encriptado = BCrypt::Password.create("123456789")
+    un_usuario_valido = User.new(email: 'agustin@gmail.com', name: 'Agustin', role: 2, subsidiary: @una_sucursal)
     assert un_usuario_valido.valid?
-  end
-
-  # Falta el rol que tiene validacion obligatoria
-  def test_no_valido
-    un_usuario_no_valido = User.new(email: 'agustinsalum@gmail.com', password: BCrypt::Password.create("my password"), password_confirmation: 'my password' , name: 'Agustin', subsidiary: @una_sucursal)
-    assert_not un_usuario_no_valido.valid?
   end
 end
