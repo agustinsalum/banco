@@ -7,4 +7,13 @@ class SessionsController < ApplicationController
 
   def dashboard
   end
+
+  def profile
+  end
+
+  def reset nueva_contraseña
+    usuario = User.find(user_id)
+    usuario.password = nueva_contraseña
+    usuario.save
+  end
 end
