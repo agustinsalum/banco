@@ -1,12 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 
-require 'bcrypt'
+# Otros
+fecha_hoy = DateTime.now()
 
 # Creamos provincias
 
@@ -25,9 +21,16 @@ sucursal_79 = Subsidiary.new(address: 'Avenida 79', phone: '2262000001', localit
 
 # Creamos usuarios
 
-usuario_admin    = User.new(email: 'admin@gmail.com', password: 123456789, name: 'Admin', role: 1)
-usuario_empleado = User.new(email: 'empleado@gmail.com', password: BCrypt::Password.create("empleado"), password_confirmation: 'empleado' , name: 'Empleado', role: 2)
-usuario_cliente  = User.new(email: 'cliente@gmail.com', password: BCrypt::Password.create("clientee"), password_confirmation: 'cliente' , name: 'Cliente', role: 3)
+usuario_admin      = User.new( email: 'admin@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'admin', role: 3)
+usuario_bank       = User.new( email: 'empleado@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'bank', role: 2, subsidiary: sucursal_83)
+usuario_client     = User.new( email: 'cliente@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente')
+usuario_client_2   = User.new( email: 'cliente2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente2')
+
+# Creamos turnos
+
+turno_1 = Turn.new(date_hour: fecha_hoy, reason_turn: "Renovacion de la tarjeta", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client)
+turno_2 = Turn.new(date_hour: fecha_hoy, reason_turn: "Quejarme", subsidiary: sucursal_79, state: 'Pendiente', user_client: usuario_client_2)
+turno_3 = Turn.new(date_hour: fecha_hoy, reason_turn: "Debitacion", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client_2)
 
 # Crear
 
@@ -41,5 +44,5 @@ sucursal_83.save()
 sucursal_79.save()
 
 usuario_admin.save()
-usuario_empleado.save()
-usuario_cliente.save()
+usuario_bank.save()
+usuario_client.save()

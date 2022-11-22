@@ -1,29 +1,3 @@
 
-<h2>Mis turnos</h2>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-   <hr class="bg-danger border-2 border-top border-danger">
-</p>
-
-<table class="table">
-  <thead class="table-dark">
-    <tr>
-    <th scope="col">#</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Motivo</th>
-      <th scope="col">Sucursal</th>
-      <th scope="col">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @mis_turnos.each do |turno| %>
-        <tr>
-         <th scope="row"> <%=turno.id%> </th>
-         <td><%= turno.date_hour %></td>
-         <td><%= turno.reason_turn %></td>
-         <td><%= turno.subsidiary %></td>
-         <!-- <td><%= link_to 'Show', user_car_path(@user,@car) %></td>
-         <td><%= link_to 'Edit', edit_user_car_path(@user, @car) %></td> -->
-        </tr>
-    <%end %>
-   </tbody>
-</table>
+<h1>Turns#Show</h1>
+<p>Find me in app/views/turns/show.html.erb</p>
