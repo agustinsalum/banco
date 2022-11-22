@@ -1,0 +1,27 @@
+
+<h2>Mis turnos</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Motivo</th>
+      <th scope="col">Sucursal</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mis_turnos.each do |turno| %>
+        <tr>
+         <th scope="row">1</th>
+         <td><%= turno.date_hour %></td>
+         <td><%= turno.reason_turn %></td>
+         <td><%= turno.subsidiary %></td>
+        </tr>
+    <%end %>
+   </tbody>
+</table>
