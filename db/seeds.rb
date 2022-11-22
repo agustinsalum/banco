@@ -46,3 +46,7 @@ sucursal_79.save()
 usuario_admin.save()
 usuario_bank.save()
 usuario_client.save()
+
+turno_1.save()
+turno_2.save()
+turno_3.save()
