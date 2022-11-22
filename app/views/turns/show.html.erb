@@ -17,10 +17,12 @@
   <tbody>
     <% @mis_turnos.each do |turno| %>
         <tr>
-         <th scope="row">1</th>
+         <th scope="row"> <%=turno.id%> </th>
          <td><%= turno.date_hour %></td>
          <td><%= turno.reason_turn %></td>
          <td><%= turno.subsidiary %></td>
+         <!-- <td><%= link_to 'Show', user_car_path(@user,@car) %></td>
+         <td><%= link_to 'Edit', edit_user_car_path(@user, @car) %></td> -->
         </tr>
     <%end %>
    </tbody>
