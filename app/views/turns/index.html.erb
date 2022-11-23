@@ -5,6 +5,8 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
+<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Solicitar turno", turns_new_path %> </button>
+
 <table class="table">
   <thead class="table-dark">
     <tr>
@@ -12,19 +14,25 @@
       <th scope="col">Fecha</th>
       <th scope="col">Motivo</th>
       <th scope="col">Sucursal</th>
-      <th scope="col">Acciones</th>
+      <th scope="col">Modificar</th>
+      <th scope="col">Eliminar</th>
     </tr>
   </thead>
   <tbody>
     <% @turnos_usuario_actual.each do |turno| %>
         <tr>
-         <th scope="row"> <%=turno.id%> </th>
-         <td><%= turno.date_hour %></td>
-         <td><%= turno.reason_turn %></td>
-         <td><%= turno.subsidiary %></td>
-         <td><%#= link_to 'Modificar', turns_update_path %></td>
-         <td><%#= link_to 'Eliminar', turns_destroy_path %></td>
+          <th scope="row"> <%=turno.id%> </th>
+          <td> <%= turno.date_hour %> </td>
+          <td> <%= turno.reason_turn %> </td>
+          <td> <%= turno.subsidiary.address %> </td>
+          
+          <td><%= link_to turns_edit_path(turno.id) do %>
+            <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+          <% end %></td>
+          <td><%= link_to turns_destroy_path(turno.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+            <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+          <% end %></td>
         </tr>
-    <%end %>
-   </tbody>
+      <%end %>
+    </tbody>
 </table>

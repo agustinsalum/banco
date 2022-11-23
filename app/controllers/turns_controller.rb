@@ -1,5 +1,12 @@
 class TurnsController < ApplicationController
 
+  # new muestra el formulario, mientras que create procesa el formulario
+  def new
+  end
+
+  def create
+  end
+
   def index
     # El usuario actual lo obtenemos con current_user
     todos_turnos = Turn.all
@@ -9,9 +16,14 @@ class TurnsController < ApplicationController
   def show
   end
 
+  # Edit muestra el formulario, mientras que update procesa el formulario
+  def edit
+  end
+
   def update
   end
 
-  def delete
+  def destroy
+    puts "holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   end
 end
