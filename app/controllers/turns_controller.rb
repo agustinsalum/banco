@@ -2,6 +2,7 @@ class TurnsController < ApplicationController
 
   # new muestra el formulario, mientras que create procesa el formulario
   def new
+    @todas_sucursales = Subsidiary.all
   end
 
   def create

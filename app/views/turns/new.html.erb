@@ -1,1 +1,17 @@
-<p>Hola mundo new</p>
+<p class="fs-2">Formulario para obtener un turno</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<p><em>Seleccione la sucursal por la cual desea ser atendido. Debe presentarse 15 minutos antes del horario establecido</em></p>
+
+<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="visible(this.value);">
+  <option selected>Selecciona una sucursal</option>
+    <% @todas_sucursales.each do |s| %>
+      <%= options_for_select([['Direccion: ' + s.address + ' Ciudad: ' + s.locality.name_locality]]) %>
+    <% end %>
+</select>
+
+
+<p class="h3" style="visibility:hidden;" id="formulario_oculto">Seleccione un horario de la sucursal:</p>

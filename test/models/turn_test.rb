@@ -11,13 +11,13 @@ class TurnTest < ActiveSupport::TestCase
   end
 
   def test_valido
-    un_turno_valido = Turn.new(date_hour: @fecha_hoy, reason_turn: "Renovacion de tarjeta", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @un_cliente)
+    un_turno_valido = Turn.new(date_hour: @fecha_hoy, day_week: 'Lunes', hour: @fecha_hoy.strftime("%I:%M:%S"), reason_turn: "Renovacion de tarjeta", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @un_cliente)
     assert un_turno_valido.valid?
   end
 
   # Falta el motivo (o razon) del turno que tiene validacion obligatoria
   def test_no_valido
-    un_turno_no_valido = Turn.new(date_hour: @fecha_hoy, subsidiary: @una_sucursal, state: 'Pendiente', user_client: @un_cliente)
+    un_turno_no_valido = Turn.new(date_hour: @fecha_hoy, day_week: 'Lunes', hour: @fecha_hoy.strftime("%I:%M:%S"), subsidiary: @una_sucursal, state: 'Pendiente', user_client: @un_cliente)
     assert_not un_turno_no_valido.valid?
   end
 end

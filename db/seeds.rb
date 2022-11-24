@@ -1,6 +1,9 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
+
+puts "Empezamos a cargar los datos"
+
 # Otros
 fecha_hoy = DateTime.now()
 
@@ -28,9 +31,9 @@ usuario_client_2   = User.new( email: 'cliente2@gmail.com', password: '123456789
 
 # Creamos turnos
 
-turno_1 = Turn.new(date_hour: fecha_hoy, reason_turn: "Renovacion de la tarjeta", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client)
-turno_2 = Turn.new(date_hour: fecha_hoy, reason_turn: "Quejarme", subsidiary: sucursal_79, state: 'Pendiente', user_client: usuario_client_2)
-turno_3 = Turn.new(date_hour: fecha_hoy, reason_turn: "Debitacion", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client_2)
+turno_1 = Turn.new(turn_date: fecha_hoy, day_week: 'Lunes', hour: fecha_hoy.strftime("%I:%M:%S"), reason_turn: "Renovacion de la tarjeta", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client)
+turno_2 = Turn.new(turn_date: fecha_hoy, day_week: 'Lunes', hour: fecha_hoy.strftime("%I:%M:%S"), reason_turn: "Quejarme", subsidiary: sucursal_79, state: 'Pendiente', user_client: usuario_client_2)
+turno_3 = Turn.new(turn_date: fecha_hoy, day_week: 'Lunes', hour: fecha_hoy.strftime("%I:%M:%S"), reason_turn: "Debitacion", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client_2)
 
 # Crear
 

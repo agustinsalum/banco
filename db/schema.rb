@@ -49,7 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_214937) do
   end
 
   create_table "turns", force: :cascade do |t|
-    t.datetime "date_hour"
+    t.datetime "turn_date"
+    t.string "day_week"
+    t.time "hour"
     t.string "reason_turn"
     t.string "comment"
     t.bigint "subsidiary_id", null: false

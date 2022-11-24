@@ -1,7 +1,9 @@
 class CreateTurns < ActiveRecord::Migration[7.0]
   def change
     create_table :turns do |t|
-      t.datetime :date_hour
+      t.datetime :turn_date
+      t.string :day_week
+      t.time :hour
       t.string :reason_turn
       t.string :comment
       t.references :subsidiary, null: false, foreign_key: true
