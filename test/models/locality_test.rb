@@ -11,8 +11,16 @@ class LocalityTest < ActiveSupport::TestCase
   end
   
   # Falta la provincia que es una fk obligatoria
-  def test_valido
+  def test_no_valido_fk
     una_localidad_no_valida = Locality.new(name_locality: 'Necochea' )
     assert_not una_localidad_no_valida.valid?
   end
+  
+  # Falta la provincia que es una fk obligatoria
+  def test_no_valido_asociacion
+    una_localidad_valida = Locality.new(name_locality: 'Necochea', province: @una_provincia )
+    una_localidad_valida.save()
+    una_localidad_no_valida = Locality.new(name_locality: 'Necochea', province: @una_provincia )
+    assert_not una_localidad_no_valida.valid?
+    end
 end

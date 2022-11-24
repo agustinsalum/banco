@@ -35,7 +35,7 @@
           <td><%= link_to turns_edit_path(turno.id) do %>
             <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
           <% end %></td>
-          <td><%= link_to turns_destroy_path(turno.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+          <td><%= link_to turns_destroy_path(turno.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
             <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
           <% end %></td>
         </tr>

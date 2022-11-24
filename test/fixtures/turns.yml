@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date_hour: 2022-11-17 20:20:11
+  turn_date: 2022-11-17 20:20:11
   reason_turn: MyString
   comment: MyString
   subsidiary: one
@@ -10,7 +10,7 @@ one:
   user_bank: one
 
 two:
-  date_hour: 2022-11-17 20:20:11
+  turn_date: 2022-11-17 20:20:11
   reason_turn: MyString
   comment: MyString
   subsidiary: two

@@ -1,5 +1,6 @@
 class Schedule < ApplicationRecord
   validates :day_week, :hour_since, :hour_until, presence: true
+  validates :day_week, uniqueness: { scope: :subsidiary_id }
   validate :until_since_menor
   belongs_to :subsidiary
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_214937) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_17_232045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_214937) do
     t.bigint "province_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name_locality", "province_id"], name: "index_localities_on_name_locality_and_province_id", unique: true
     t.index ["province_id"], name: "index_localities_on_province_id"
   end
 
@@ -26,41 +27,45 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_214937) do
     t.string "name_province"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name_province"], name: "index_provinces_on_name_province", unique: true
   end
 
   create_table "schedules", force: :cascade do |t|
     t.string "day_week"
-    t.bigint "subsidiary_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.time "hour_since"
     t.time "hour_until"
     t.datetime "schedule_date"
+    t.bigint "subsidiary_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_week", "subsidiary_id"], name: "index_schedules_on_day_week_and_subsidiary_id", unique: true
     t.index ["subsidiary_id"], name: "index_schedules_on_subsidiary_id"
   end
 
   create_table "subsidiaries", force: :cascade do |t|
+    t.string "name_subsidiary"
     t.string "address"
     t.string "phone"
     t.bigint "locality_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["locality_id"], name: "index_subsidiaries_on_locality_id"
+    t.index ["name_subsidiary"], name: "index_subsidiaries_on_name_subsidiary", unique: true
   end
 
   create_table "turns", force: :cascade do |t|
     t.datetime "turn_date"
-    t.string "day_week"
     t.time "hour"
     t.string "reason_turn"
     t.string "comment"
-    t.bigint "subsidiary_id", null: false
     t.string "state"
+    t.bigint "subsidiary_id", null: false
     t.bigint "user_client_id", null: false
     t.bigint "user_bank_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subsidiary_id"], name: "index_turns_on_subsidiary_id"
+    t.index ["turn_date", "hour", "subsidiary_id"], name: "index_turns_on_turn_date_and_hour_and_subsidiary_id", unique: true
     t.index ["user_bank_id"], name: "index_turns_on_user_bank_id"
     t.index ["user_client_id"], name: "index_turns_on_user_client_id"
   end
