@@ -4,12 +4,12 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<p><em>Usted selecciono la localidad <%= @una_localidad.name_locality %>. A continuacion se le proporcionara las sucursales. Seleccione una sucursal y presione "aceptar"</em></p>
+<p><em>Usted selecciono la localidad <%= @una_localidad.name_locality %>. A continuacion se le proporcionara las sucursales que cuenta la localidad. Seleccione una sucursal y presione "aceptar"</em></p>
 
 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="boton_sucursal(this.value);">
   <option selected>Selecciona una sucursal</option>
     <% @sucursales.each do |s| %>
-      <%= options_for_select([[s.name_subsidiary]]) %>
+      <%= options_for_select([['Nombre: ' + s.name_subsidiary]]) %>
 </select>
 <button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="boton"> <%= link_to "Aceptar", turns_select_turn_path(:sucursal => s.id) %> </button>
 <% end %>

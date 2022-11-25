@@ -7,13 +7,13 @@ class SubsidiaryTest < ActiveSupport::TestCase
   end
   
   def test_valido
-    una_sucursal_valida = Subsidiary.new(address: 'Calle 6 esquina 83 n 000',phone: '2262-000000', locality: @una_localidad)
+    una_sucursal_valida = Subsidiary.new(name_subsidiary: 'villa diaz velez', address: 'Calle 6 esquina 83 n 000',phone: '2262-000000', locality: @una_localidad)
     assert una_sucursal_valida.valid?
   end
 
   # Falta la localidad que es una fk obligatoria
   def test_no_valido
-    una_sucursal_no_valida = Subsidiary.new(address: 'Calle 6 esquina 83 n 000',phone: '2262-000000')
+    una_sucursal_no_valida = Subsidiary.new(name_subsidiary: 'villa diaz velez', address: 'Calle 6 esquina 83 n 000',phone: '2262-000000')
     assert_not una_sucursal_no_valida.valid?
   end
 end

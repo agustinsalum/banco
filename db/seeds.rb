@@ -6,7 +6,6 @@ puts "Empezamos a cargar los datos"
 
 # Otros
 fecha_hoy = DateTime.now()
-fecha_hoy_adelantada = DateTime.now()+60
 
 puts "Se cargaron las fechas correctamente"
 # Creamos provincias
@@ -31,13 +30,13 @@ localidad_necochea.save()
 localidad_la_plata.save()
 localidad_perito_moreno.save()
 
-puts "Se cargaron las pronvincias con exito"
+puts "Se cargaron las localidades con exito"
 # Creamos sucursales
 
-sucursal_83   = Subsidiary.new(address: 'Calle 83', phone: '2262000000', locality: localidad_necochea)
-sucursal_79   = Subsidiary.new(address: 'Avenida 79', phone: '2262000001', locality: localidad_necochea)
-sucursal_116  = Subsidiary.new(address: 'Esquina 116', phone: '2262000001', locality: localidad_perito_moreno)
-sucursal_111  = Subsidiary.new(address: 'Esquina 111', phone: '2262000001', locality: localidad_calamuchita)
+sucursal_83   = Subsidiary.new(name_subsidiary: 'Villa Diaz Velez', address: 'Calle 83', phone: '2262000000', locality: localidad_necochea)
+sucursal_79   = Subsidiary.new(name_subsidiary: 'Diagonal 79 - playa', address: 'Avenida 79', phone: '2262000001', locality: localidad_necochea)
+sucursal_116  = Subsidiary.new(name_subsidiary: 'Banco perito moreno', address: 'Esquina 116', phone: '2262000001', locality: localidad_perito_moreno)
+sucursal_111  = Subsidiary.new(name_subsidiary: 'Calamuchita bank', address: 'Esquina 111', phone: '2262000001', locality: localidad_calamuchita)
 
 
 sucursal_83.save()
@@ -46,6 +45,40 @@ sucursal_116.save()
 sucursal_111.save()
 
 puts "Se cargaron las sucursales con exito"
+# Creamos horarios para sucursales
+
+horario_lunes_sucursal_83     = Schedule.new(day_week: "Lunes",     hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_83)
+horario_martes_sucursal_83    = Schedule.new(day_week: "Martes",    hour_since: '09:00', hour_until: '13:00', subsidiary: sucursal_83)
+horario_miercoles_sucursal_83 = Schedule.new(day_week: "Miercoles", hour_since: '10:00', hour_until: '14:00', subsidiary: sucursal_83)
+horario_jueves_sucursal_83    = Schedule.new(day_week: "Jueves",    hour_since: '11:00', hour_until: '15:00', subsidiary: sucursal_83)
+horario_viernes_sucursal_83   = Schedule.new(day_week: "Viernes",   hour_since: '12:00', hour_until: '16:00', subsidiary: sucursal_83)
+
+horario_lunes_sucursal_79     = Schedule.new(day_week: "Lunes",     hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_79)
+horario_martes_sucursal_79    = Schedule.new(day_week: "Martes",    hour_since: '09:00', hour_until: '13:00', subsidiary: sucursal_79)
+horario_viernes_sucursal_79   = Schedule.new(day_week: "Viernes",   hour_since: '10:00', hour_until: '14:00', subsidiary: sucursal_79)
+
+horario_lunes_sucursal_116    = Schedule.new(day_week: "Lunes",     hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_116)
+horario_viernes_sucursal_116  = Schedule.new(day_week: "Viernes",   hour_since: '10:00', hour_until: '14:00', subsidiary: sucursal_116)
+
+horario_lunes_sucursal_111    = Schedule.new(day_week: "Lunes",     hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_111)
+
+horario_lunes_sucursal_83.save()
+horario_martes_sucursal_83.save()
+horario_miercoles_sucursal_83.save()
+horario_jueves_sucursal_83.save()
+horario_viernes_sucursal_83.save()
+
+horario_lunes_sucursal_79.save()
+horario_martes_sucursal_79.save()
+horario_viernes_sucursal_79.save()
+
+horario_lunes_sucursal_116    = Schedule.new(day_week: "Lunes",     hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_116)
+horario_viernes_sucursal_116  = Schedule.new(day_week: "Viernes",   hour_since: '10:00', hour_until: '14:00', subsidiary: sucursal_116)
+
+horario_lunes_sucursal_111    = Schedule.new(day_week: "Lunes",     hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_111)
+
+
+puts "Se cargaron los horarios con exito"
 # Creamos usuarios
 
 usuario_admin      = User.new( email: 'admin@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'admin', role: 1)
@@ -60,9 +93,9 @@ usuario_client.save()
 puts "Se cargaron los usuarios con exito"
 # Creamos turnos
 
-turno_1 = Turn.new(turn_date: fecha_hoy, hour: fecha_hoy.strftime("%I:%M:%S"), reason_turn: "Renovacion de la tarjeta", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client)
-turno_2 = Turn.new(turn_date: fecha_hoy, hour: fecha_hoy.strftime("%I:%M:%S"), reason_turn: "Quejarme", subsidiary: sucursal_79, state: 'Pendiente', user_client: usuario_client_2)
-turno_3 = Turn.new(turn_date: fecha_hoy_adelantada, hour: fecha_hoy.strftime("%I:%M:%S"), reason_turn: "Debitacion", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client_2)
+turno_1 = Turn.new(turn_date: fecha_hoy, hour: '09:00', reason_turn: "Renovacion de la tarjeta", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client)
+turno_2 = Turn.new(turn_date: fecha_hoy, hour: '09:00', reason_turn: "Quejarme", subsidiary: sucursal_79, state: 'Pendiente', user_client: usuario_client_2)
+turno_3 = Turn.new(turn_date: fecha_hoy, hour: '09:00', reason_turn: "Debitacion", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client_2)
 
 turno_1.save()
 turno_2.save()

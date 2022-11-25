@@ -5,7 +5,7 @@ class Schedule < ApplicationRecord
   belongs_to :subsidiary
 
   def until_since_menor
-    if (hour_since > hour_until)
+    if (Time.parse(hour_since) > Time.parse(hour_until))
       errors.add(:hour_since, "La hora anterior no puede ser mayor a la posterior")
     end
   end
