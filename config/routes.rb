@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'turns/edit'
   get 'turns/select_localities'
   get 'turns/select_subsidiaries'
+  get 'turns/select_turn'
   delete 'turns/destroy'
   post 'turn/create'
   post 'turn/update'

@@ -9,9 +9,9 @@
 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="boton_sucursal(this.value);">
   <option selected>Selecciona una sucursal</option>
     <% @sucursales.each do |s| %>
-      <%= options_for_select([['Nombre: ' + s.name_subsidiary]]) %>
+      <%= options_for_select([[s.name_subsidiary]]) %>
 </select>
-<button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="boton"> <%= link_to "Aceptar", turns__path(:localidad => l.id) %> </button>
+<button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="boton"> <%= link_to "Aceptar", turns_select_turn_path(:sucursal => s.id) %> </button>
 <% end %>
 
 

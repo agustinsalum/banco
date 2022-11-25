@@ -11,8 +11,13 @@ class TurnsController < ApplicationController
   end
 
   def select_subsidiaries
-    @una_localidad = localities.find(params[:localidad])
+    @una_localidad = Locality.find(params[:localidad])
     @sucursales = @una_localidad.subsidiaries
+  end
+
+  def select_turn
+    @una_sucursal = Subsidiary.find(params[:sucursal])
+    @turnos = @una_sucursal.schedules
   end
 
   def create
