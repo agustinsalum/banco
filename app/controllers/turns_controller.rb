@@ -2,7 +2,17 @@ class TurnsController < ApplicationController
 
   # new muestra el formulario, mientras que create procesa el formulario
   def new
-    @todas_sucursales = Subsidiary.all
+    @todas_provincias = Province.all
+  end
+
+  def select_localities
+    @una_provincia = Province.find(params[:provincia])
+    @localidades = @una_provincia.localities
+  end
+
+  def select_subsidiaries
+    @una_localidad = localities.find(params[:localidad])
+    @sucursales = @una_localidad.subsidiaries
   end
 
   def create

@@ -1,0 +1,30 @@
+<p class="fs-2">Formulario para obtener un turno</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<p><em>Usted selecciono la provincia <%= @una_provincia.name_province %>. A continuacion se le proporcionara las localidades que cuentan con sucursales. Seleccione una sucursal y presione "aceptar"</em></p>
+
+<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="boton_localidad(this.value);">
+  <option selected>Selecciona una localidad</option>
+    <% @localidades.each do |l| %>
+      <%= options_for_select([['Nombre: ' + l.name_locality]]) %>
+</select>
+<button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="boton"> <%= link_to "Aceptar", turns_select_subsidiaries_path(:localidad => l.id) %> </button>
+<% end %>
+
+
+
+
+<!-- FUNCIONES JAVASCRIPT -->
+
+<script type="text/javascript">
+    function boton_localidad(valor) {
+      if (valor == "Selecciona una localidad"){
+        document.getElementById("boton").style.visibility = "hidden"
+        }else{
+          document.getElementById("boton").style.visibility = "visible"
+          }
+      }
+</script>

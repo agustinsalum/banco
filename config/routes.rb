@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'turns/new'
   get 'turns/show'
   get 'turns/edit'
+  get 'turns/select_localities'
+  get 'turns/select_subsidiaries'
   delete 'turns/destroy'
   post 'turn/create'
   post 'turn/update'

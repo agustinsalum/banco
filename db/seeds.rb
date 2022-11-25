@@ -13,27 +13,37 @@ puts "Se cargaron las fechas correctamente"
 
 provincia_buenos_aires = Province.new(name_province: 'Buenos aires')
 provincia_santa_cruz   = Province.new(name_province: 'Santa cruz')
+provincia_cordoba      = Province.new(name_province: 'Cordoba')
 
 provincia_buenos_aires.save()
 provincia_santa_cruz.save()
+provincia_cordoba.save()
 
 puts "Se cargaron las pronvincias con exito"
 # Creamos localidades
 
-localidad_necochea = Locality.new(name_locality: 'Necochea', province: provincia_buenos_aires)
-localidad_la_plata = Locality.new(name_locality: 'La Plata', province: provincia_buenos_aires)
+localidad_necochea      = Locality.new(name_locality: 'Necochea', province: provincia_buenos_aires)
+localidad_la_plata      = Locality.new(name_locality: 'La Plata', province: provincia_buenos_aires)
+localidad_perito_moreno = Locality.new(name_locality: 'Perito moreno', province: provincia_santa_cruz)
+localidad_calamuchita   = Locality.new(name_locality: 'Calamuchita', province: provincia_cordoba)
 
 localidad_necochea.save()
 localidad_la_plata.save()
+localidad_perito_moreno.save()
 
 puts "Se cargaron las pronvincias con exito"
 # Creamos sucursales
 
-sucursal_83 = Subsidiary.new(address: 'Calle 83', phone: '2262000000', locality: localidad_necochea)
-sucursal_79 = Subsidiary.new(address: 'Avenida 79', phone: '2262000001', locality: localidad_necochea)
+sucursal_83   = Subsidiary.new(address: 'Calle 83', phone: '2262000000', locality: localidad_necochea)
+sucursal_79   = Subsidiary.new(address: 'Avenida 79', phone: '2262000001', locality: localidad_necochea)
+sucursal_116  = Subsidiary.new(address: 'Esquina 116', phone: '2262000001', locality: localidad_perito_moreno)
+sucursal_111  = Subsidiary.new(address: 'Esquina 111', phone: '2262000001', locality: localidad_calamuchita)
+
 
 sucursal_83.save()
 sucursal_79.save()
+sucursal_116.save()
+sucursal_111.save()
 
 puts "Se cargaron las sucursales con exito"
 # Creamos usuarios

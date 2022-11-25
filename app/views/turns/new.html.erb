@@ -4,14 +4,30 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<p><em>Seleccione la sucursal por la cual desea ser atendido. Debe presentarse 15 minutos antes del horario establecido</em></p>
+<p><em>Seleccione la provincia en la que se encuentra para que el sistema le muestre las diferentes localidades que cuentan con sucursales. Seleccione la provincia y presione "aceptar".</em></p>
 
-<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="visible(this.value);">
-  <option selected>Selecciona una sucursal</option>
-    <% @todas_sucursales.each do |s| %>
-      <%= options_for_select([['Direccion: ' + s.address + ' Ciudad: ' + s.locality.name_locality]]) %>
-    <% end %>
+<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="boton_provincia(this.value);">
+  <option selected>Selecciona una provincia</option>
+    <% @todas_provincias.each do |p| %>
+      <%= options_for_select([['Nombre: ' + p.name_province]]) %>
 </select>
 
+<button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="boton"> <%= link_to "Aceptar", turns_select_localities_path(:provincia => p.id) %> </button>
+<% end %>
 
-<p class="h3" style="visibility:hidden;" id="formulario_oculto">Seleccione un horario de la sucursal:</p>
+
+
+
+
+
+<!-- FUNCIONES JAVASCRIPT -->
+
+<script type="text/javascript">
+    function boton_provincia(valor) {
+      if (valor == "Selecciona una provincia"){
+        document.getElementById("boton").style.visibility = "hidden"
+        }else{
+          document.getElementById("boton").style.visibility = "visible"
+          }
+      }
+</script>
