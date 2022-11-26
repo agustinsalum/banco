@@ -31,9 +31,8 @@ class TurnsController < ApplicationController
   end
 
   def index
-    # El usuario actual lo obtenemos con current_user
-    todos_turnos = Turn.all
-    @turnos_usuario_actual = todos_turnos.select { |un_turno| un_turno.user_client_id == current_user.id}
+    # https://guides.rubyonrails.org/active_record_querying.html
+    @turnos_usuario_actual = Turn.where(user_client_id: current_user)
   end
 
   def show
@@ -47,6 +46,8 @@ class TurnsController < ApplicationController
   end
 
   def destroy
-    puts "holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    puts "QUIERO DESTRUIR"
+    @un_turno = Turn.find(params[:id])
+    puts @un_turno
   end
 end
