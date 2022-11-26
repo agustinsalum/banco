@@ -93,13 +93,27 @@ usuario_client.save()
 puts "Se cargaron los usuarios con exito"
 # Creamos turnos
 
-turno_1 = Turn.new(turn_date: fecha_hoy, hour: '09:00', reason_turn: "Renovacion de la tarjeta", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client)
-turno_2 = Turn.new(turn_date: fecha_hoy, hour: '09:00', reason_turn: "Quejarme", subsidiary: sucursal_79, state: 'Pendiente', user_client: usuario_client_2)
-turno_3 = Turn.new(turn_date: fecha_hoy, hour: '09:00', reason_turn: "Debitacion", subsidiary: sucursal_83, state: 'Pendiente', user_client: usuario_client_2)
+turno_1 = Turn.new(turn_date: fecha_hoy, hour: '09:00', reason_turn: "Renovacion de la tarjeta"    , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client)
+turno_2 = Turn.new(turn_date: fecha_hoy, hour: '10:00', reason_turn: "Dar de baja la tarjeta"      , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client)
+turno_3 = Turn.new(turn_date: fecha_hoy, hour: '11:00', reason_turn: "Pedido de factura"           , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client)
+turno_4 = Turn.new(turn_date: fecha_hoy, hour: '12:00', reason_turn: "Baja de tarjeta de debito"   , subsidiary: sucursal_111  , state: 'Pendiente', user_client: usuario_client)
+turno_5 = Turn.new(turn_date: fecha_hoy, hour: '13:00', reason_turn: "Tarjeta retenida por cajero" , subsidiary: sucursal_116  , state: 'Pendiente', user_client: usuario_client)
+turno_6 = Turn.new(turn_date: fecha_hoy, hour: '14:00', reason_turn: "Alta de tarjeta "            , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client)
+turno_7 = Turn.new(turn_date: fecha_hoy, hour: '15:00', reason_turn: "Problema con home banking"   , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client)
+turno_8 = Turn.new(turn_date: fecha_hoy, hour: '16:00', reason_turn: "Cambio de contraseñas"       , subsidiary: sucursal_111  , state: 'Pendiente', user_client: usuario_client)
+turno_9 = Turn.new(turn_date: fecha_hoy, hour: '17:00', reason_turn: "Cajeros sin dolares"         , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client_2)
+turno_10 = Turn.new(turn_date: fecha_hoy, hour: '18:00', reason_turn: "Baja del sistema"           , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client_2)
 
 turno_1.save()
 turno_2.save()
 turno_3.save()
+turno_4.save()
+turno_5.save()
+turno_6.save()
+turno_7.save()
+turno_8.save()
+turno_9.save()
+turno_10.save()
 
 puts "Se cargaron los turnos con exito"
 

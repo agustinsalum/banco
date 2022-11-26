@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_17_232045) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_26_052003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_17_232045) do
   end
 
   create_table "turns", force: :cascade do |t|
-    t.datetime "turn_date"
-    t.time "hour"
+    t.string "turn_date"
+    t.string "hour"
     t.string "reason_turn"
     t.string "comment"
     t.string "state"

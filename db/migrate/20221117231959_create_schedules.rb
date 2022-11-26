@@ -8,6 +8,5 @@ class CreateSchedules < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_index :schedules, [:day_week, :subsidiary_id], unique: true
   end
 end
