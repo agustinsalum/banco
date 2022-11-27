@@ -33,6 +33,7 @@ class TurnsController < ApplicationController
   def index
     # https://guides.rubyonrails.org/active_record_querying.html
     @turnos_usuario_actual = Turn.where(user_client_id: current_user)
+    @turnos_usuario_actual = @turnos_usuario_actual.paginate(page: params[:page])
   end
 
   def show

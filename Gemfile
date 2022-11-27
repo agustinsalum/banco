@@ -48,11 +48,17 @@ gem "sassc-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# GEMAS AGREGADAS AGUSTIN
+
 # Devise
 gem "devise", "~> 4.8.1"
 
 # Bootstrap
-gem "bootstrap"
+gem "bootstrap", "~> 5.2.3"
+
+# Paginacion con bootstrap
+gem "will_paginate", "~> 3.3"
+gem "will_paginate-bootstrap-style", "~> 0.2.4"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

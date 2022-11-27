@@ -1,4 +1,5 @@
 class Turn < ApplicationRecord
+  self.per_page = 2 # Cantidad de turnos por pagina
   validates :reason_turn, :turn_date, :hour, :state, presence: true
   validates :comment, presence: false
   validates :turn_date, :hour, uniqueness: { scope: :subsidiary_id }

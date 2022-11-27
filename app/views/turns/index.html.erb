@@ -7,6 +7,9 @@
 
 <button type="button" class="btn btn-primary btn-lg"> <%= link_to "Solicitar turno", turns_new_path %> </button>
 
+<%= will_paginate @turnos_usuario_actual %>
+
+
 <table class="table">
   <thead class="table-dark">
     <tr>
@@ -40,3 +43,5 @@
       <%end %>
     </tbody>
 </table>
+
+<%= will_paginate @turnos_usuario_actual, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
