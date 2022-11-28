@@ -9,6 +9,7 @@ class UserManagementController < ApplicationController
   end
 
   def new
+    @nuevo_usuario = User.new
   end
 
   def edit
