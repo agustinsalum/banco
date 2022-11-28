@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'user_management/index'
+  get 'user_management/show'
+  get 'user_management/destroy'
+  #
   get 'turns/index'
   get 'turns/new'
   get 'turns/show'

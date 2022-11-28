@@ -4,8 +4,28 @@
 
 puts "Empezamos a cargar los datos"
 
-# Otros
-fecha_hoy = DateTime.now()
+# Fechas
+fecha_2022_diciembre_18 = DateTime.civil_from_format :local, 2022, 12, 18
+fecha_2022_diciembre_19 = DateTime.civil_from_format :local, 2022, 12, 19
+fecha_2022_diciembre_20 = DateTime.civil_from_format :local, 2022, 12, 20
+fecha_2022_diciembre_21 = DateTime.civil_from_format :local, 2022, 12, 21
+fecha_2022_diciembre_22 = DateTime.civil_from_format :local, 2022, 12, 22
+fecha_2022_diciembre_23 = DateTime.civil_from_format :local, 2022, 12, 23
+fecha_2022_diciembre_26 = DateTime.civil_from_format :local, 2022, 12, 26
+fecha_2022_diciembre_27 = DateTime.civil_from_format :local, 2022, 12, 27
+fecha_2022_diciembre_28 = DateTime.civil_from_format :local, 2022, 12, 28
+#
+dia_mes_anio_2022_diciembre_18 = fecha_2022_diciembre_18.strftime("%B %d, %Y")
+dia_mes_anio_2022_diciembre_19 = fecha_2022_diciembre_19.strftime("%B %d, %Y")
+dia_mes_anio_2022_diciembre_20 = fecha_2022_diciembre_20.strftime("%B %d, %Y")
+dia_mes_anio_2022_diciembre_21 = fecha_2022_diciembre_21.strftime("%B %d, %Y")
+dia_mes_anio_2022_diciembre_22 = fecha_2022_diciembre_22.strftime("%B %d, %Y")
+dia_mes_anio_2022_diciembre_23 = fecha_2022_diciembre_23.strftime("%B %d, %Y")
+dia_mes_anio_2022_diciembre_26 = fecha_2022_diciembre_26.strftime("%B %d, %Y")
+dia_mes_anio_2022_diciembre_27 = fecha_2022_diciembre_27.strftime("%B %d, %Y")
+dia_mes_anio_2022_diciembre_28 = fecha_2022_diciembre_28.strftime("%B %d, %Y")
+
+fecha_actual_con_minutos_adelantados = DateTime.now() + 10*60
 
 puts "Se cargaron las fechas correctamente"
 # Creamos provincias
@@ -93,17 +113,21 @@ usuario_client.save()
 puts "Se cargaron los usuarios con exito"
 # Creamos turnos
 
-turno_1 = Turn.new(turn_date: fecha_hoy, hour: '09:00', reason_turn: "Renovacion de la tarjeta"    , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client)
-turno_2 = Turn.new(turn_date: fecha_hoy, hour: '10:00', reason_turn: "Dar de baja la tarjeta"      , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client)
-turno_3 = Turn.new(turn_date: fecha_hoy, hour: '11:00', reason_turn: "Pedido de factura"           , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client)
-turno_4 = Turn.new(turn_date: fecha_hoy, hour: '12:00', reason_turn: "Baja de tarjeta de debito"   , subsidiary: sucursal_111  , state: 'Pendiente', user_client: usuario_client)
-turno_5 = Turn.new(turn_date: fecha_hoy, hour: '13:00', reason_turn: "Tarjeta retenida por cajero" , subsidiary: sucursal_116  , state: 'Pendiente', user_client: usuario_client)
-turno_6 = Turn.new(turn_date: fecha_hoy, hour: '14:00', reason_turn: "Alta de tarjeta "            , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client)
-turno_7 = Turn.new(turn_date: fecha_hoy, hour: '15:00', reason_turn: "Problema con home banking"   , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client)
-turno_8 = Turn.new(turn_date: fecha_hoy, hour: '16:00', reason_turn: "Cambio de contraseñas"       , subsidiary: sucursal_111  , state: 'Pendiente', user_client: usuario_client)
-turno_9 = Turn.new(turn_date: fecha_hoy, hour: '17:00', reason_turn: "Cajeros sin dolares"         , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client_2)
-turno_10 = Turn.new(turn_date: fecha_hoy, hour: '18:00', reason_turn: "Baja del sistema"           , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client_2)
+turno_0   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_18, hour: '09:00', reason_turn: "Renovacion de la tarjeta"    , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client)
+turno_1   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_19, hour: '10:00', reason_turn: "Dar de baja la tarjeta"      , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client)
+turno_2   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_20, hour: '11:00', reason_turn: "Pedido de factura"           , subsidiary: sucursal_111  , state: 'Pendiente', user_client: usuario_client)
+turno_3   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_21, hour: '12:00', reason_turn: "Baja de tarjeta de debito"   , subsidiary: sucursal_116  , state: 'Pendiente', user_client: usuario_client)
+turno_4   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_22, hour: '13:00', reason_turn: "Tarjeta retenida por cajero" , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client)
+turno_5   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_23, hour: '13:00', reason_turn: "Los cajeros no funcionan"    , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client)
+turno_6   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_26, hour: '11:00', reason_turn: "Vencimiento de la tarjeta"   , subsidiary: sucursal_111  , state: 'Pendiente', user_client: usuario_client)
+turno_7   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_27, hour: '14:00', reason_turn: "Cambio de tarjeta gastada"   , subsidiary: sucursal_116  , state: 'Pendiente', user_client: usuario_client)
+turno_8   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_28, hour: '13:00', reason_turn: "Modificacion de datos"       , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client_2)
+turno_9   = Turn.new(turn_date: dia_mes_anio_2022_diciembre_18, hour: '15:00', reason_turn: "Problema con home banking"   , subsidiary: sucursal_79   , state: 'Pendiente', user_client: usuario_client_2)
+turno_10  = Turn.new(turn_date: dia_mes_anio_2022_diciembre_19, hour: '16:00', reason_turn: "Cambio de contraseñas"       , subsidiary: sucursal_111  , state: 'Pendiente', user_client: usuario_client_2)
+turno_11  = Turn.new(turn_date: dia_mes_anio_2022_diciembre_20, hour: '17:00', reason_turn: "Cajeros sin dolares"         , subsidiary: sucursal_116  , state: 'Pendiente', user_client: usuario_client_2)
+turno_12  = Turn.new(turn_date: dia_mes_anio_2022_diciembre_21, hour: '18:00', reason_turn: "Baja del sistema"            , subsidiary: sucursal_83   , state: 'Pendiente', user_client: usuario_client_2)
 
+turno_0.save()
 turno_1.save()
 turno_2.save()
 turno_3.save()
@@ -114,6 +138,8 @@ turno_7.save()
 turno_8.save()
 turno_9.save()
 turno_10.save()
+turno_11.save()
+turno_12.save()
 
 puts "Se cargaron los turnos con exito"
 

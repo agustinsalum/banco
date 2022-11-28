@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_052003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subsidiary_id"], name: "index_turns_on_subsidiary_id"
-    t.index ["turn_date", "hour", "subsidiary_id"], name: "index_turns_on_turn_date_and_hour_and_subsidiary_id", unique: true
+    t.index ["turn_date", "user_client_id"], name: "index_turns_on_turn_date_and_user_client_id", unique: true
     t.index ["user_bank_id"], name: "index_turns_on_user_bank_id"
     t.index ["user_client_id"], name: "index_turns_on_user_client_id"
   end
