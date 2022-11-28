@@ -101,9 +101,9 @@ horario_lunes_sucursal_111    = Schedule.new(day_week: "Lunes",     hour_since: 
 puts "Se cargaron los horarios con exito"
 # Creamos usuarios
 
-usuario_admin      = User.new( email: 'admin@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'admin', role: 1)
+usuario_admin      = User.new( email: 'admin@gmail.com',    password: '123456789', password_confirmation: '123456789', name: 'admin', role: 1)
 usuario_bank       = User.new( email: 'empleado@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'bank', role: 2, subsidiary: sucursal_83)
-usuario_client     = User.new( email: 'cliente@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente')
+usuario_client     = User.new( email: 'cliente@gmail.com',  password: '123456789', password_confirmation: '123456789', name: 'cliente')
 usuario_client_2   = User.new( email: 'cliente2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente2')
 usuario_client_3   = User.new( email: 'cliente3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente3')
 usuario_client_4   = User.new( email: 'cliente4@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente4')

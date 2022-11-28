@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
 
   def landing_page
+    @rol = current_user.role
   end
 
   def profile
