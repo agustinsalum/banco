@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'user_management/perfil'
   get 'user_management/edit'
   get 'user_management/show'
-  get 'user_management/destroy'
+  delete 'user_management/destroy'
   #
   get 'turns/index'
   get 'turns/new'

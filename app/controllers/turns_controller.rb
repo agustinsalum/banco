@@ -48,7 +48,7 @@ class TurnsController < ApplicationController
 
   def destroy
     puts "QUIERO DESTRUIR"
-    @un_turno = Turn.find(params[:id])
-    puts @un_turno
+    @un_turno = Turn.find(params[:turno])
+    @un_turno.destroy
   end
 end
