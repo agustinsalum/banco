@@ -1,4 +1,9 @@
 
+<% flash.each do |flash_type, message| %>
+<div class="alert alert-success" role="alert">
+   <%= message %>
+</div>
+<% end %>
 
 <h2>Gestion de usuarios</h2>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -37,15 +42,16 @@
             <td> <%= usuario.subsidiary.address %></td>
           <% end %>
 
-          <td><%= link_to user_management_perfil_url(:usuario => usuario) do %>
-            <%= image_tag "person-fill.svg", size: "20x20", class: "some class here" %>
-          <% end %></td>
-
-          <td><%= link_to user_management_edit_path(usuario.id) do %>
-            <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
-          <% end %></td>
-          <td><%= link_to user_management_destroy_path(:usuario => usuario.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
-            <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+          <% if usuario.id != current_user.id %>
+            <td><%= link_to user_management_perfil_url(:usuario => usuario) do %>
+                <%= image_tag "person-fill.svg", size: "20x20", class: "some class here" %>
+            <% end %></td>
+            <td><%= link_to user_management_edit_path(usuario.id) do %>
+                <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+            <% end %></td>
+            <td><%= link_to user_management_destroy_path(:usuario => usuario.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
+                <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+            <% end %></td>
           <% end %></td>
         </tr>
       <%end %>

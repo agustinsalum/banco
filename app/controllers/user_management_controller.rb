@@ -18,9 +18,9 @@ class UserManagementController < ApplicationController
   end
 
   def destroy
-    @usuario_eliminar = User.find(params[:usuario])
-    @usuario_eliminar.destroy
-    flash[:notice] = "El usuario: #{@usuario_eliminar} ha sido eliminado"
-    redirect_to :index, notice: "Quote was successfully created."
+    @un_usuario = User.find(params[:usuario])
+    @un_usuario.destroy
+    flash[:message] = "El usuario con email: #{@un_usuario.email} ha sido eliminado del sistema"
+    redirect_to user_management_index_path
   end
 end
