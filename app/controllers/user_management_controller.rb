@@ -20,7 +20,7 @@ class UserManagementController < ApplicationController
   def destroy
     @usuario_eliminar = User.find(params[:usuario])
     @usuario_eliminar.destroy
-    flash[:notice] = "El turno ha sido eliminado"
-    redirect_to controller: :orders, action: :index, method: :post
+    flash[:notice] = "El usuario: #{@usuario_eliminar} ha sido eliminado"
+    redirect_to :index, notice: "Quote was successfully created."
   end
 end

@@ -1,4 +1,9 @@
 
+<% flash.each do |flash_type, message| %>
+<div class="alert alert-danger" role="alert">
+   <%= message %>
+</div>
+<% end %>
 
 <h2>Mis turnos</h2>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -24,8 +29,8 @@
     </tr>
   </thead>
   <tbody>
-    <% @turnos_usuario_actual.each do |turno| %>
-        <tr>
+  <% @turnos_usuario_actual.each do |turno| %>
+      <tr>
           <th scope="row"> <%=turno.id%> </th>
           <td> <%= '10/11/22' %> </td>
           <td> <%= '08:00' %> </td>
@@ -39,9 +44,14 @@
           <td><%= link_to turns_destroy_path(:turno => turno.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el turno con fecha?"  } do %>
             <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
           <% end %></td>
-        </tr>
-      <%end %>
-    </tbody>
+      </tr>
+    <%end %>
+  </tbody>
 </table>
+
+<% if @turnos_usuario_actual.empty? %>
+  <p class="text-primary">No posee turnos por el momento</p>
+<% end %>
+
 
 <%= will_paginate @turnos_usuario_actual, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
