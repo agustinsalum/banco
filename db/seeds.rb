@@ -85,7 +85,7 @@ horario_martes_sucursal_200    = Schedule.new(day_week: "Martes"    , hour_since
 horario_lunes_sucursal_116    = Schedule.new(day_week: "Lunes"     , hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_116)
 horario_viernes_sucursal_116  = Schedule.new(day_week: "Viernes"   , hour_since: '10:00', hour_until: '14:00', subsidiary: sucursal_116)
 
-horario_lunes_sucursal_111    = Schedule.new(day_week: "Lunes"     , hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_111)
+horario_lunes_sucursal_111    = Schedule.new(day_week: "Lunes"     , hour_since: '10:00', hour_until: '11:00', subsidiary: sucursal_111)
 
 horario_lunes_sucursal_83.save()
 horario_martes_sucursal_83.save()
@@ -100,11 +100,9 @@ horario_viernes_sucursal_79.save()
 horario_lunes_sucursal_200.save()
 horario_martes_sucursal_200.save()
 
-horario_lunes_sucursal_116    = Schedule.new(day_week: "Lunes",     hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_116)
-horario_viernes_sucursal_116  = Schedule.new(day_week: "Viernes",   hour_since: '10:00', hour_until: '14:00', subsidiary: sucursal_116)
-
-horario_lunes_sucursal_111    = Schedule.new(day_week: "Lunes",     hour_since: '08:00', hour_until: '12:00', subsidiary: sucursal_111)
-
+horario_lunes_sucursal_116.save()
+horario_viernes_sucursal_116.save()
+horario_lunes_sucursal_111.save()
 
 puts "Se cargaron los horarios con exito"
 # Creamos usuarios
