@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get 'user_management/index'
+  get 'user_management/new'
+  get 'user_management/perfil'
+  get 'user_management/edit'
   get 'user_management/show'
   get 'user_management/destroy'
   #

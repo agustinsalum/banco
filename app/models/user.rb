@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  self.per_page = 4 # Cantidad de turnos por pagina
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

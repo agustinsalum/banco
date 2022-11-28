@@ -105,10 +105,15 @@ usuario_admin      = User.new( email: 'admin@gmail.com', password: '123456789', 
 usuario_bank       = User.new( email: 'empleado@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'bank', role: 2, subsidiary: sucursal_83)
 usuario_client     = User.new( email: 'cliente@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente')
 usuario_client_2   = User.new( email: 'cliente2@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente2')
+usuario_client_3   = User.new( email: 'cliente3@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente3')
+usuario_client_4   = User.new( email: 'cliente4@gmail.com', password: '123456789', password_confirmation: '123456789', name: 'cliente4')
 
 usuario_admin.save()
 usuario_bank.save()
 usuario_client.save()
+usuario_client_2.save()
+usuario_client_3.save()
+usuario_client_4.save()
 
 puts "Se cargaron los usuarios con exito"
 # Creamos turnos

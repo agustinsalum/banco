@@ -1,2 +1,55 @@
-<h1>UserManagement#index</h1>
-<p>Find me in app/views/user_management/index.html.erb</p>
+
+
+<h2>Gestion de usuarios</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear usuario", user_management_new_path %> </button>
+
+<%= will_paginate @todos_usuarios %>
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Sucursal</th>
+      <th scope="col">Ver perfil</th>
+      <th scope="col">Modificar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @todos_usuarios.each do |usuario| %>
+        <tr>
+          <th scope="row"> <%=usuario.id%> </th>
+          <td> <%= usuario.email %> </td>
+          <td> <%= usuario.name %> </td>
+          <td> <%= usuario.role %> </td>
+          
+          <% if usuario.subsidiary.nil? %> 
+            <td> No posee </td>  
+          <% else %>
+            <td> <%= usuario.subsidiary.address %></td>
+          <% end %>
+
+          <td><%= link_to user_management_perfil_url(:usuario => usuario) do %>
+            <%= image_tag "person-fill.svg", size: "20x20", class: "some class here" %>
+          <% end %></td>
+
+          <td><%= link_to user_management_edit_path(usuario.id) do %>
+            <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+          <% end %></td>
+          <td><%= link_to user_management_destroy_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
+            <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+          <% end %></td>
+        </tr>
+      <%end %>
+    </tbody>
+</table>
+
+<%= will_paginate @todos_usuarios, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
