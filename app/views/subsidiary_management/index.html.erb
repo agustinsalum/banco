@@ -1,0 +1,63 @@
+<% flash.each do |flash_type, message| %>
+<div class="alert alert-success" role="alert">
+   <%= message %>
+</div>
+<% end %>
+
+<h2>Todas las sucursales</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear sucursal", subsidiary_management_new_path %> </button>
+
+<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear horario", subsidiary_management_new_schedule_path %> </button>
+
+<%= will_paginate @todas_sucursales %>
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Localidad</th>
+      <th scope="col">Agregar horario</th>
+      <th scope="col">Modificar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @todas_sucursales.each do |sucursal| %>
+      <tr>
+          <th scope="row"> <%=sucursal.id%> </th>
+          <td> <%= sucursal.name_subsidiary %> </td>
+          <td> <%= sucursal.address %> </td>
+          <td> <%= sucursal.phone %> </td>
+          <td> <%= sucursal.locality.name_locality %> </td>
+          
+          <td><%= link_to subsidiary_management_assing_schedule_path(:sucursal => sucursal.id) do %>
+              <%= image_tag "alarm.svg", size: "20x20", class: "some class here" %>
+          </td>
+          <% end %>
+          <td><%= link_to subsidiary_management_edit_path(:sucursal => sucursal.id) do %>
+              <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+          </td>
+          <% end %>
+          <td><%= link_to subsidiary_management_destroy_path(:sucursal => sucursal.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar la sucursal"  } do %>
+              <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+          </td>
+          <% end %>2
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @todas_sucursales.empty? %>
+  <p class="text-primary">No existen sucursales cargadas</p>
+<% end %>
+
+
+<%= will_paginate @todas_sucursales, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
