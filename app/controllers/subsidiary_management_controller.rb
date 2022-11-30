@@ -25,10 +25,20 @@ class SubsidiaryManagementController < ApplicationController
   end
 
   def destroy
-    @una_sucursal = Subsidiary.find(params[:sucursal])
-    @turnos_sucursal = @una_sucursal.turns
-    @turnos_sucursal.where('state' == 'Pendiente')
-    flash[:message] = "El turno con motivo:  #{@un_turno.reason_turn} con fecha: #{@un_turno.turn_date} ha sido eliminado del sistema"
-    redirect_to turns_index_path
+    pendientes = false
+    una_sucursal = Subsidiary.find(params[:sucursal])
+    turnos_sucursal = una_sucursal.turns
+    if turnos_sucursal.length > 0
+      turnos_sucursal.find_each do |turno|
+        pendientes = true if (turno.state == "Pendiente")
+      end
+    end
+    if !(pendientes)
+      una_sucursal.destroy
+      flash[:success] = "la sucursal con nombre #{una_sucursal.name_subsidiary} ha sido eliminada del sistema"
+    else
+      flash[:danger] = "la sucursal no puede ser eliminada por tener turnos pendientes"
+    end
+    redirect_to subsidiary_management_index_path
   end
 end

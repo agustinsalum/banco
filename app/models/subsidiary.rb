@@ -4,5 +4,6 @@ class Subsidiary < ApplicationRecord
   validates :address, length: { in: 5..50 }
   has_many :schedules, dependent: :destroy
   has_many :turns, dependent: :destroy
+  has_many :users, dependent: :destroy
   belongs_to :locality
 end
