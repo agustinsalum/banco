@@ -4,10 +4,6 @@ class UserManagementController < ApplicationController
     @todos_usuarios = User.all.paginate(page: params[:page])
   end
 
-  def perfil
-    @un_perfil = User.find(params[:usuario])
-  end
-
   def new
     @nuevo_usuario = User.new
   end
@@ -16,6 +12,7 @@ class UserManagementController < ApplicationController
   end
 
   def show
+    @un_perfil = User.find(params[:usuario])
   end
 
   def destroy

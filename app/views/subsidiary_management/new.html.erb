@@ -6,10 +6,11 @@
 
 
 <%= form_with model: @sucursal do |form| %>
-  <%= form.text_field :title %>
-  <%= form.text_field :title %>
-  <%= @todas_provincias.each do |provincia| %>
-    <%= form.select :Provincia, [provincia.name_province] %>
+  <%= form.text_field :name_subsidiary %>
+  <%= form.text_field :address %>
+  <%= form.number_field :phone %>
+  <%= @todas_localidades.each do |localidad| %>
+    <%= form.select :localidad, [localidad.name_locality] %>
   <% end %>
-  <%= form.submit ubsidiary_management_create_path %>
+  <%= form.submit subsidiary_management_create_path %>
 <% end %>

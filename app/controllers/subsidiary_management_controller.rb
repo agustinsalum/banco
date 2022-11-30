@@ -14,7 +14,7 @@ class SubsidiaryManagementController < ApplicationController
 
   def new
     @sucursal = Subsidiary.new
-    @todas_provincias = Province.all
+    @todas_localidades = Locality.all
   end
 
   def create
