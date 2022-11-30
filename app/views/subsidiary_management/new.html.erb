@@ -4,13 +4,20 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-
 <%= form_with model: @sucursal do |form| %>
-  <%= form.text_field :name_subsidiary %>
-  <%= form.text_field :address %>
-  <%= form.number_field :phone %>
-  <%= @todas_localidades.each do |localidad| %>
-    <%= form.select :localidad, [localidad.name_locality] %>
-  <% end %>
-  <%= form.submit subsidiary_management_create_path %>
+  <p>
+    <%= form.label :name_subsidiary %><br>
+    <%= form.text_field :name_subsidiary %>
+
+    <%= form.label :address %><br>
+    <%= form.text_field :address %>
+
+    <%= form.label :phone %><br>
+    <%= form.number_field :phone %>
+
+    <%= form.label :locality %><br>
+    <%= @todas_localidades.each do |localidad| %>
+      <%= form.select :Localidad, [localidad.name_locality] %>
+    <% end %>
+  <%= link_to "Crear sucursal", subsidiary_management_create %>
 <% end %>
