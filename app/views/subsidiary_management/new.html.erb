@@ -1,2 +1,15 @@
-<h1>SubsidiaryManagement#new</h1>
-<p>Find me in app/views/subsidiary_management/new.html.erb</p>
+<p class="fs-2">Formulario para la creacion de sucursal</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+
+<%= form_with model: @sucursal do |form| %>
+  <%= form.text_field :title %>
+  <%= form.text_field :title %>
+  <%= @todas_provincias.each do |provincia| %>
+    <%= form.select :Provincia, [provincia.name_province] %>
+  <% end %>
+  <%= form.submit ubsidiary_management_create_path %>
+<% end %>

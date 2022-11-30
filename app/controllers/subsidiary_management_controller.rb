@@ -13,6 +13,8 @@ class SubsidiaryManagementController < ApplicationController
   end
 
   def new
+    @sucursal = Subsidiary.new
+    @todas_provincias = Province.all
   end
 
   def create
