@@ -19,5 +19,5 @@
     <%= @todas_localidades.each do |localidad| %>
       <%= form.select :Localidad, [localidad.name_locality] %>
     <% end %>
-  <%= link_to "Crear sucursal", subsidiary_management_create %>
+  <%= link_to "Crear sucursal", "/subsidiaries" %>
 <% end %>
