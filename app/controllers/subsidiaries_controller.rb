@@ -12,6 +12,7 @@ class SubsidiariesController < ApplicationController
   end
 
   def create
+    puts "entreeeeeeeeeeeeeeeeeeeee"
   end
 
   def edit

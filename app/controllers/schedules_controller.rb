@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :set_subsidiary
   def index
   end
 
@@ -18,5 +19,11 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
+  end
+
+
+  private
+  def set_subsidiary
+    @subsidiary = Subsidiary.find(params[:subsidiary_id])
   end
 end

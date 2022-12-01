@@ -16,8 +16,7 @@
     <%= form.number_field :phone %>
 
     <%= form.label :locality %><br>
-    <%= @todas_localidades.each do |localidad| %>
-      <%= form.select :Localidad, [localidad.name_locality] %>
-    <% end %>
-  <%= link_to "Crear sucursal", "/subsidiaries" %>
+    <%= form.select :locality, options_from_collection_for_select(@todas_localidades) %>
+    
+    <%= link_to "Crear sucursal", "/subsidiaries" %>
 <% end %>

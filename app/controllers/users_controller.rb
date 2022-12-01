@@ -1,4 +1,4 @@
-class UserManagementController < ApplicationController
+class UsersController < ApplicationController
   
   def index
     @todos_usuarios = User.all.paginate(page: params[:page])
@@ -19,6 +19,6 @@ class UserManagementController < ApplicationController
     @un_usuario = User.find(params[:usuario])
     @un_usuario.destroy
     flash[:message] = "El usuario con email: #{@un_usuario.email} ha sido eliminado del sistema"
-    redirect_to user_management_index_path
+    redirect_to users_index_path
   end
 end

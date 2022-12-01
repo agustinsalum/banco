@@ -46,7 +46,7 @@
           <td> <%= sucursal.phone %> </td>
           <td> <%= sucursal.locality.name_locality %> </td>
           
-          <td><%= link_to "/subsidiaries/new#{sucursal.id}" do %>
+          <td><%= link_to new_subsidiary_schedule_path(sucursal) do %>
               <%= image_tag "alarm.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
