@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  get 'home/index'
-  get 'home/show'
-  # Rutas usuarios
+  # Rutas devise y controlador users
   devise_for :users
-  resources :users
-  # Rutas horarios
-  # Rutas sucursales
-  resources :subsidiaries do
-    resources :schedules 
+  resources :users do
+    get 'perfil', to: 'users#perfil', as: :perfil
   end
 
   # Rutas turnos
   resources :turns
+  
 
+  # Rutas sucursales que contiene chedules
+  resources :subsidiaries do
+    resources :schedules 
+  end
+
+  # Ruta root
   root to: "home#index"
 end

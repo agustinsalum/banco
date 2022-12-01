@@ -1,2 +1,22 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+<center> 
+    <h1 class="display-6">Bienvenido</h1> 
+        <blockquote class="blockquote">
+        <% if current_user.role == 'cliente' %>
+            <p>Hola <%= current_user.name %>! Bienvenido a la APP del banco en la cual podra:
+                <li>Solicitar turnos en nuestras sucursales</li>
+                <li>Visualizar todos sus turnos</li>
+                <li>Cancelar o modificar sus turnos pendientes</li></p>
+        <% elsif current_user.role == 'empleado_bancario' %>
+            <p>Hola <%= current_user.name %>! Bienvenido a la APP del banco en la cual podra:
+                <li>Atender turnos de la sucursal en la cual trabaja</li>
+                <li>Visualizar perfil de clientes</li>
+                <li>Visualizar informacion de las sucursales</li></p>
+        <% else %>
+            <p>Hola <%= current_user.name %>! Bienvenido a la APP del banco en la cual podra:
+                <li>Gestionar sucursales </li>
+                <li>Gestionar horarios de sucursales </li>
+                <li>Gestionar todos los usuarios</li></p>
+        <% end %>
+        </blockquote>
+</center>

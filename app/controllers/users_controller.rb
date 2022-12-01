@@ -21,4 +21,12 @@ class UsersController < ApplicationController
     flash[:message] = "El usuario con email: #{@un_usuario.email} ha sido eliminado del sistema"
     redirect_to users_index_path
   end
+
+  # Otras funciones
+
+  def perfil
+    @perfil = User.find(params[:user_id])
+  end
+
+
 end

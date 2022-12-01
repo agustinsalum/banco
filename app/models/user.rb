@@ -11,4 +11,6 @@ class User < ApplicationRecord
   belongs_to :subsidiary, optional: true
   has_many :my_turns, class_name: :Turn, foreign_key: :user_client, dependent: :destroy
   has_many :shift_attention, class_name: :Turn, foreign_key: :user_bank
+
+
 end
