@@ -1,12 +1,6 @@
-class SubsidiaryManagementController < ApplicationController
+class SubsidiariesController < ApplicationController
   def index
     @todas_sucursales = Subsidiary.all.paginate(page: params[:page])
-  end
-
-  def new_schedule
-  end
-
-  def assing_schedule
   end
 
   def show
@@ -21,6 +15,8 @@ class SubsidiaryManagementController < ApplicationController
   end
 
   def edit
+    @una_sucursal = Subsidiary.find(params[:id])
+    puts @una_sucursal
   end
 
   def update
@@ -28,7 +24,9 @@ class SubsidiaryManagementController < ApplicationController
 
   def destroy
     pendientes = false
-    una_sucursal = Subsidiary.find(params[:sucursal])
+    una_sucursal = Subsidiary.find(params[:id])
+    puts "elementooooooooooooooooooooooooooooooooo:"
+    puts una_sucursal
     turnos_sucursal = una_sucursal.turns
     if turnos_sucursal.length > 0
       turnos_sucursal.find_each do |turno|
@@ -41,6 +39,10 @@ class SubsidiaryManagementController < ApplicationController
     else
       flash[:danger] = "la sucursal no puede ser eliminada por tener turnos pendientes"
     end
-    redirect_to subsidiary_management_index_path
+    redirect_to "/subsidiaries"
   end
+
+
+
+
 end

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SubsidiaryManagementControllerTest < ActionDispatch::IntegrationTest
+class SubsidiariesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get subsidiary_management_index_url
     assert_response :success
