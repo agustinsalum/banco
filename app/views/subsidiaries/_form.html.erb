@@ -1,0 +1,29 @@
+<%= form_with model: @sucursal do |form| %>
+  <div class="card">
+    <div class="card-body">
+        
+        <div class="mb-3">
+            <%= form.label :name_subsidiary %><br>
+            <%= form.text_field :name_subsidiary %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :address %><br>
+            <%= form.text_field :address %>
+        </div>
+        
+        <div class="mb-3">
+            <%= form.label :phone %><br>
+            <%= form.number_field :phone %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :locality %><br>
+            <%= form.select :locality_id, options_from_collection_for_select(@todas_localidades, :id, :name_locality, include_blank: "Seleccione localidad") %>
+        </div>
+
+        <%= form.submit :Enviar, class: 'btn btn-success'%> |
+        <%= form.submit "Limpiar", :type => "reset", class: "btn btn-primary" %>
+    </div>
+</div>
+<% end %>

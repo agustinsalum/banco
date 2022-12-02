@@ -1,2 +1,11 @@
-<h1>Subsidiary#edit</h1>
-<p>Find me in app/views/subsidiary/edit.html.erb</p>
+<p class="fs-2">Formulario para editar la sucursal <%=@una_sucursal.name_subsidiary%> </p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<p><em> Ingrese nuevamente los datos. Por ultimo, seleccione la localidad y presione "Enviar".</em></p>
+
+<%= render 'form', action: edit_subsidiary_path %>
+        
+<%= link_to 'Volver', subsidiaries_path , class: 'btn,btn-secondary' %>

@@ -25,16 +25,28 @@ class SubsidiariesController < ApplicationController
 
   def edit
     @una_sucursal = Subsidiary.find(params[:id])
+    @todas_localidades = Locality.all
   end
 
   def update
+    puts "ENTRE0"
+    @sucursal_editada = Subsidiary.find(subsidiary_params)
+    puts "ENTRE1"
+    if @sucursal_editada.update(subsidiary_params)
+      puts "ENTRE2"
+      flash[:success] = "la sucursal se edito satisfactoriamente"
+      redirect_to subsidiaries_path
+    else
+      puts "ENTRE3"
+      errores = @sucursal_editada.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
+      redirect_to subsidiaries_path
+    end
   end
 
   def destroy
     pendientes = false
     una_sucursal = Subsidiary.find(params[:id])
-    puts "elementooooooooooooooooooooooooooooooooo:"
-    puts una_sucursal
     turnos_sucursal = una_sucursal.turns
     if turnos_sucursal.length > 0
       turnos_sucursal.find_each do |turno|
