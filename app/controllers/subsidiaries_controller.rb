@@ -17,7 +17,8 @@ class SubsidiariesController < ApplicationController
       flash[:success] = "la sucursal con nombre #{@nueva_sucursal.name_subsidiary} ha sido creada de manera satisfactoria"
       redirect_to subsidiaries_path 
     else
-      flash[:danger] = "Error en la creacion de la sucursal"
+      errores = @nueva_sucursal.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
       redirect_to subsidiaries_path
     end
   end
