@@ -12,7 +12,14 @@ class SubsidiariesController < ApplicationController
   end
 
   def create
-    puts "entreeeeeeeeeeeeeeeeeeeee"
+    @nueva_sucursal = Subsidiary.new(params[:subsidiary])
+    if @nueva_sucursal.save()
+      redirect_to @nueva_sucursal
+    else
+      # This line overrides the default rendering behavior, which
+      # would have been to render the "create" view.
+      render "new"
+    end
   end
 
   def edit
@@ -39,10 +46,6 @@ class SubsidiariesController < ApplicationController
     else
       flash[:danger] = "la sucursal no puede ser eliminada por tener turnos pendientes"
     end
-    redirect_to "/subsidiaries"
+    redirect_to subsidiaries_path
   end
-
-
-
-
 end

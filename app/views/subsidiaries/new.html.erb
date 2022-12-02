@@ -4,19 +4,33 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
+<p><em> Ingrese el nombre, la direccion y el numero de telefono. Tenga el cuenta que el nombre no debe existir. Por ultimo, seleccione la localidad y presione "crear sucursal".</em></p>
+
 <%= form_with model: @sucursal do |form| %>
-  <p>
-    <%= form.label :name_subsidiary %><br>
-    <%= form.text_field :name_subsidiary %>
+  <div class="card">
+    <div class="card-body">
+        <div class="mb-3">
+            <%= form.label :name_subsidiary %><br>
+            <%= form.text_field :name_subsidiary %>
+        </div>
 
-    <%= form.label :address %><br>
-    <%= form.text_field :address %>
+        <div class="mb-3">
+        <%= form.label :address %><br>
+        <%= form.text_field :address %>
+        </div>
+        <div class="mb-3">
+        <%= form.label :phone %><br>
+        <%= form.number_field :phone %>
+        </div>
 
-    <%= form.label :phone %><br>
-    <%= form.number_field :phone %>
+        <div class="mb-3">
 
-    <%= form.label :locality %><br>
-    <%= form.select :locality, options_from_collection_for_select(@todas_localidades) %>
-    
-    <%= link_to "Crear sucursal", "/subsidiaries" %>
+        <%= form.label :locality %><br>
+        <%= form.select :locality, options_from_collection_for_select(@todas_localidades, "id", "name_locality") %>
+        </div>
+        
+         <%= form.submit "Crear sucursal", class: "btn btn-primary" %>
+         <%= form.submit "Limpiar", :type => "reset", class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
