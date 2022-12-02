@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   # Rutas devise y controlador users
   devise_for :users
   resources :users do
-    get 'perfil', to: 'users#perfil', as: :perfil
+    # Para que no pida parametros
+    collection do
+      get 'perfil', action: 'perfil', as: :perfil
+    end
   end
 
   # Rutas turnos

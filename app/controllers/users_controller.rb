@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   # Otras funciones
 
   def perfil
-    @perfil = User.find(params[:user_id])
   end
 
 
