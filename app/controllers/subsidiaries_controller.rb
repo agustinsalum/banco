@@ -12,13 +12,13 @@ class SubsidiariesController < ApplicationController
   end
 
   def create
-    @nueva_sucursal = Subsidiary.new(params[:subsidiary])
+    @nueva_sucursal = Subsidiary.new(subsidiary_params)
     if @nueva_sucursal.save()
-      redirect_to @nueva_sucursal
+      flash[:success] = "la sucursal con nombre #{@nueva_sucursal.name_subsidiary} ha sido creada de manera satisfactoria"
+      redirect_to subsidiaries_path 
     else
-      # This line overrides the default rendering behavior, which
-      # would have been to render the "create" view.
-      render "new"
+      flash[:danger] = "Error en la creacion de la sucursal"
+      redirect_to subsidiaries_path
     end
   end
 
@@ -47,5 +47,13 @@ class SubsidiariesController < ApplicationController
       flash[:danger] = "la sucursal no puede ser eliminada por tener turnos pendientes"
     end
     redirect_to subsidiaries_path
+  end
+
+  private
+
+
+  
+  def subsidiary_params
+    params.require(:subsidiary).permit(:name_subsidiary, :address, :phone, :locality_id)
   end
 end

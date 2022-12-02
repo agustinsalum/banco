@@ -26,11 +26,14 @@
         <div class="mb-3">
 
         <%= form.label :locality %><br>
-        <%= form.select :locality, options_from_collection_for_select(@todas_localidades, "id", "name_locality") %>
+        <%= form.select :locality_id, options_from_collection_for_select(@todas_localidades, :id, :name_locality, include_blank: "Seleccione localidad") %>
         </div>
         
          <%= form.submit "Crear sucursal", class: "btn btn-primary" %>
          <%= form.submit "Limpiar", :type => "reset", class: "btn btn-primary" %>
+         <%= link_to 'Volver', subsidiaries_path , class: 'btn,btn-secondary' %>
+
+
     </div>
   </div>
 <% end %>
