@@ -47,9 +47,9 @@ class TurnsController < ApplicationController
   end
 
   def destroy
-    @un_turno = Turn.find(params[:turno])
+    @un_turno = Turn.find(params[:id])
     @un_turno.destroy
     flash[:message] = "El turno con motivo:  #{@un_turno.reason_turn} con fecha: #{@un_turno.turn_date} ha sido eliminado del sistema"
-    redirect_to turns_index_path
+    redirect_to turns_path
   end
 end

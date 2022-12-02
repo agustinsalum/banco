@@ -10,7 +10,7 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear usuario", users_new_path %> </button>
+<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear usuario", new_user_path %> </button>
 
 <%= will_paginate @todos_usuarios %>
 
@@ -43,13 +43,13 @@
           <% end %>
 
           <% if usuario.id != current_user.id %>
-            <td><%= link_to users_show_url(:usuario => usuario) do %>
+            <td><%= link_to user_perfil_path(usuario.id) do %>
                 <%= image_tag "person-fill.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
-            <td><%= link_to users_edit_path(usuario.id) do %>
+            <td><%= link_to edit_user_path(usuario.id) do %>
                 <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
-            <td><%= link_to users_destroy_path(:usuario => usuario.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
+            <td><%= link_to user_path(usuario.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
                 <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
           <% end %></td>

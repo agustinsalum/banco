@@ -17,7 +17,6 @@ class SubsidiariesController < ApplicationController
 
   def edit
     @una_sucursal = Subsidiary.find(params[:id])
-    puts @una_sucursal
   end
 
   def update

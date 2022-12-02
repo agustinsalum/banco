@@ -10,7 +10,7 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Solicitar turno", turns_new_path %> </button>
+<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Solicitar turno", new_turn_path %> </button>
 
 <%= will_paginate @turnos_usuario_actual %>
 
@@ -39,10 +39,10 @@
           <td> <%= turno.subsidiary.address %> </td>
           
           <% if turno.state == 'Pendiente'%>
-            <td><%= link_to turns_edit_path(turno.id) do %>
+            <td><%= link_to edit_turn_path(turno.id) do %>
                 <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
-            <td><%= link_to turns_destroy_path(:turno => turno.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el turno con fecha?"  } do %>
+            <td><%= link_to turn_path(turno.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el turno con fecha?"  } do %>
                 <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
           <% end %></td>

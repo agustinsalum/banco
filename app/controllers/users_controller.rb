@@ -9,17 +9,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @usuario = User.find(params[:id])
   end
 
   def show
-    @un_perfil = User.find(params[:usuario])
   end
 
   def destroy
-    @un_usuario = User.find(params[:usuario])
+    @un_usuario = User.find(params[:id])
     @un_usuario.destroy
     flash[:message] = "El usuario con email: #{@un_usuario.email} ha sido eliminado del sistema"
-    redirect_to users_index_path
+    redirect_to users_path
   end
 
   # Otras funciones

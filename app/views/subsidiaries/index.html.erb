@@ -17,9 +17,7 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear sucursal", '/subsidiaries/new' %> </button>
-
-<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear horario", '/schedules/new' %> </button>
+<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear sucursal", new_subsidiary_path %> </button>
 
 <%= will_paginate @todas_sucursales %>
 
@@ -46,15 +44,15 @@
           <td> <%= sucursal.phone %> </td>
           <td> <%= sucursal.locality.name_locality %> </td>
           
-          <td><%= link_to new_subsidiary_schedule_path(sucursal) do %>
+          <td><%= link_to new_subsidiary_schedule_path(sucursal.id) do %>
               <%= image_tag "alarm.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
-          <td><%= link_to "/subsidiaries/#{sucursal.id}/edit" do %>
+          <td><%= link_to edit_subsidiary_path(sucursal.id) do %>
               <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
-          <td><%= link_to "/subsidiaries/#{sucursal.id}", method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar la sucursal"  } do %>
+          <td><%= link_to subsidiary_path(sucursal.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar la sucursal"  } do %>
               <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>2
