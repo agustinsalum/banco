@@ -8,11 +8,15 @@ class SchedulesController < ApplicationController
 
   def new
     @nuevo_horario = Schedule.new
-    @una_sucursal = Subsidiary.find(params[:subsidiary_id])
-    @dias_semana = Schedule.dias
   end
 
   def create
+    @nuevo_horario = Schedule.new(subsidiary_params)
+    if @nueva_sucursal.save()
+      puts "SIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"
+    else
+      puts "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+    end
   end
 
   def edit
@@ -28,5 +32,9 @@ class SchedulesController < ApplicationController
   private
   def set_subsidiary
     @subsidiary = Subsidiary.find(params[:subsidiary_id])
+  end
+  
+  def subsidiary_params
+    params.require(:schedule).permit(:day_week, :hour_since, :hour_until, :subsidiary_id)
   end
 end

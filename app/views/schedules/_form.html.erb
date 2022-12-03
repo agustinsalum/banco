@@ -1,10 +1,10 @@
-<%= form_with model: @nuevo_horario do |form| %>
+<%= form_with model: @nuevo_horario , url: 'new' do |form| %>
   <div class="card">
     <div class="card-body">
         
         <div class="mb-3">
             <%= form.label :dia %><br>
-            <%= form.select :dia, options_from_collection_for_select(@dias_semana, :id, :dia, include_blank: "Seleccione dia") %>
+            <%= form.select :dia, ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes'] %>
         </div>
 
         <div class="mb-3">
