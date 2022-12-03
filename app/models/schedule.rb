@@ -4,6 +4,12 @@ class Schedule < ApplicationRecord
   validate :hour_black_and_until_since_menor
   belongs_to :subsidiary
 
+  enum dias: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado']
+
+  def dias
+    dias
+  end
+
   def hour_black_and_until_since_menor
     if hour_since.nil?
       errors.add(:hour_since, "La hora desde no puede estar vacia")

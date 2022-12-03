@@ -1,0 +1,24 @@
+<%= form_with model: @nuevo_horario do |form| %>
+  <div class="card">
+    <div class="card-body">
+        
+        <div class="mb-3">
+            <%= form.label :dia %><br>
+            <%= form.select :dia, options_from_collection_for_select(@dias_semana, :id, :dia, include_blank: "Seleccione dia") %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :hour_since %><br>
+            <%= form.time_field :hour_since %>
+        </div>
+        
+        <div class="mb-3">
+            <%= form.label :hour_until %><br>
+            <%= form.time_field :hour_until %>
+        </div>
+
+        <%= form.submit :Guardar, class: 'btn btn-success'%> |
+        <%= form.submit "Limpiar", :type => "reset", class: "btn btn-primary" %>
+    </div>
+</div>
+<% end %>

@@ -7,6 +7,9 @@ class SchedulesController < ApplicationController
   end
 
   def new
+    @nuevo_horario = Schedule.new
+    @una_sucursal = Subsidiary.find(params[:subsidiary_id])
+    @dias_semana = Schedule.dias
   end
 
   def create
