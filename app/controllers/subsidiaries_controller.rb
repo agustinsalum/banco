@@ -7,37 +7,36 @@ class SubsidiariesController < ApplicationController
   end
 
   def new
-    @sucursal = Subsidiary.new
-    @todas_localidades = Locality.all
+    @subsidiary = Subsidiary.new
+    @localities = Locality.all
   end
 
   def create
-    @nueva_sucursal = Subsidiary.new(subsidiary_params)
-    if @nueva_sucursal.save()
-      flash[:success] = "la sucursal con nombre #{@nueva_sucursal.name_subsidiary} ha sido creada de manera satisfactoria"
+    @subsidiary = Subsidiary.new(subsidiary_params)
+    if @subsidiary.save()
+      flash[:success] = "la sucursal con nombre #{@subsidiary.name_subsidiary} ha sido creada de manera satisfactoria"
       redirect_to subsidiaries_path 
     else
-      errores = @nueva_sucursal.errors.full_messages
+      errores = @subsidiary.errors.full_messages
       flash[:danger] = "Error: #{errores}"
       redirect_to subsidiaries_path
     end
   end
 
   def edit
-    @una_sucursal = Subsidiary.find(params[:id])
-    @todas_localidades = Locality.all
+    puts "Entre al edit"
+    @subsidiary = Subsidiary.find(params[:id])
+    @localities = Locality.all
   end
 
   def update
-    puts "ENTRE0"
-    @sucursal_editada = Subsidiary.find(subsidiary_params)
-    puts "ENTRE1"
+    puts "Entre al update"
+    #@sucursal_editada = Subsidiary.find(subsidiary_params)
+    @sucursal_editada = Subsidiary.find(params[:id])
     if @sucursal_editada.update(subsidiary_params)
-      puts "ENTRE2"
       flash[:success] = "la sucursal se edito satisfactoriamente"
       redirect_to subsidiaries_path
     else
-      puts "ENTRE3"
       errores = @sucursal_editada.errors.full_messages
       flash[:danger] = "Error: #{errores}"
       redirect_to subsidiaries_path
