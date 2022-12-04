@@ -16,12 +16,11 @@ class SubsidiariesController < ApplicationController
     @subsidiary = Subsidiary.new(subsidiary_params)
     if @subsidiary.save()
       flash[:success] = "la sucursal con nombre #{@subsidiary.name_subsidiary} ha sido creada de manera satisfactoria"
-      redirect_to subsidiaries_path 
     else
       errores = @subsidiary.errors.full_messages
       flash[:danger] = "Error: #{errores}"
-      redirect_to subsidiaries_path
     end
+    redirect_to subsidiaries_path 
   end
 
   def edit

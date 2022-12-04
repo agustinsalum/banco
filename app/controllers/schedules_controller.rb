@@ -7,16 +7,19 @@ class SchedulesController < ApplicationController
   end
 
   def new
-    @nuevo_horario = Schedule.new
+    @schedule = Schedule.new
   end
 
   def create
-    @nuevo_horario = Schedule.new(subsidiary_params)
-    if @nueva_sucursal.save()
-      puts "SIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"
+    @schedule = Schedule.new(schedule_params)
+    @schedule.subsidiary = @subsidiary
+    if @schedule.save()
+      flash[:success] = "Se creo satisfactoriamente el horario en el dia #{@schedule.day_week} entre #{@schedule.hour_since} y #{@schedule.hour_until} para la sucursal #{@subsidiary.name_subsidiary}"
     else
-      puts "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+      errores = @schedule.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
     end
+    redirect_to subsidiaries_path 
   end
 
   def edit
@@ -34,7 +37,7 @@ class SchedulesController < ApplicationController
     @subsidiary = Subsidiary.find(params[:subsidiary_id])
   end
   
-  def subsidiary_params
+  def schedule_params
     params.require(:schedule).permit(:day_week, :hour_since, :hour_until, :subsidiary_id)
   end
 end
