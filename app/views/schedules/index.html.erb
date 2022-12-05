@@ -39,12 +39,12 @@
           <td> <%= schedule.hour_since %> </td>
           <td> <%= schedule.hour_until %> </td>
 
-          <td><%= link_to edit_subsidiary_schedule_path(schedule.id) do %>
+          <td><%= link_to edit_subsidiary_schedule_path(@subsidiary.id,schedule.id) do %>
               <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
           
-          <td><%= link_to subsidiary_schedule_path(schedule.id) do %>
+          <td><%= link_to subsidiary_schedule_path(@subsidiary.id,schedule.id) do %>
               <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>

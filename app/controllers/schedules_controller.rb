@@ -24,7 +24,7 @@ class SchedulesController < ApplicationController
   end
 
   def edit
-    @subsidiary = Schedule.find(params[:id])
+    @schedule = Schedule.find(params[:id])
   end
 
   def update
