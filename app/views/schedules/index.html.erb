@@ -44,7 +44,7 @@
           </td>
           <% end %>
           
-          <td><%= link_to subsidiary_schedule_path(@subsidiary.id,schedule.id) do %>
+          <td><%= link_to subsidiary_schedule_path(@subsidiary.id,schedule.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el horario"  } do %>
               <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
@@ -57,5 +57,6 @@
   <p class="text-primary">La sucursal no tiene horarios definidos</p>
 <% end %>
 
-
 <%= will_paginate @schedules, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+
+<%= link_to 'Volver', subsidiaries_path , class: 'btn,btn-secondary' %>

@@ -28,9 +28,21 @@ class SchedulesController < ApplicationController
   end
 
   def update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      flash[:success] = "El horario se edito satisfactoriamente"
+    else
+      errores = @schedule.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
+    end
+    redirect_to subsidiary_schedules_path
   end
 
   def destroy
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    flash[:success] = "la horario con dia #{@schedule.day_week} perteneciente a la sucursal #{@subsidiary.name_subsidiary} ha sido eliminado del sistema"
+    redirect_to subsidiary_schedules_path
   end
 
 
