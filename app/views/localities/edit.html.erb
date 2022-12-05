@@ -1,0 +1,11 @@
+<p class="fs-2">Editar la localidad <%= @locality.name_locality %> </p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<p><em> Modifique la localidad</em></p>
+
+<%= render 'form' %>
+
+<%= link_to 'Volver', localities_path , class: 'btn,btn-secondary' %>

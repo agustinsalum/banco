@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :schedules 
   end
 
+   # Rutas sucursales que contiene chedules
+   resources :localities
+
   # Ruta root
   root to: "home#index"
 end

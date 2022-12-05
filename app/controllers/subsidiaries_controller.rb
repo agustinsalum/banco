@@ -58,8 +58,6 @@ class SubsidiariesController < ApplicationController
   end
 
   private
-
-
   
   def subsidiary_params
     params.require(:subsidiary).permit(:name_subsidiary, :address, :phone, :locality_id)

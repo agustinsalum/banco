@@ -1,0 +1,61 @@
+<% flash.each do |flash_type, message| %>
+  <% if flash[:success] %>
+    <div class="alert alert-success" role="alert">
+      <%= message %>
+    </div>
+  <% else %>
+    <% if flash[:danger] %>
+      <div class="alert alert-danger" role="alert">
+       <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h2>Todas las localidades</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<div> <%= link_to 'Crear localidad', new_locality_path, :class => "btn btn-primary" %> </div>
+
+<%= will_paginate @localities %>
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Provincia</th>
+      <th scope="col">Modificar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @localities.each do |locality| %>
+      <tr>
+          <th scope="row"> <%=locality.id%> </th>
+          <td> <%= locality.name_locality %> </td>
+          <td> <%= locality.province.name_province %> </td>
+
+          <td><%= link_to edit_locality_path(locality.id) do %>
+              <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+          </td>
+          <% end %>
+
+          <td><%= link_to locality_path(locality.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar la sucursal"  } do %>
+              <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+          </td>
+          <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @localities.empty? %>
+  <p class="text-primary">No existen localidades cargadas cargadas</p>
+<% end %>
+
+
+<%= will_paginate @localities, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
