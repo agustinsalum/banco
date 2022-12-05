@@ -1,1 +1,11 @@
-<p>Hola estas en editar</p>
+<p class="fs-2">Editar el horario del dia <%= @schedule.day_week %> de la sucursal <%= @subsidiary.name_subsidiary %> </p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<p><em> Modifique el horario</em></p>
+
+<%= render 'form' %>
+        
+<%= link_to 'Volver', subsidiaries_path , class: 'btn,btn-secondary' %>
