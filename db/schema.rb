@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_052003) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "day_week"
-    t.string "hour_since"
-    t.string "hour_until"
+    t.time "hour_since"
+    t.time "hour_until"
     t.bigint "subsidiary_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_052003) do
   end
 
   create_table "turns", force: :cascade do |t|
-    t.string "turn_date"
-    t.string "hour"
+    t.datetime "turn_date"
+    t.time "hour"
     t.string "reason_turn"
     t.string "comment"
     t.string "state"

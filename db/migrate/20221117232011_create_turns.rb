@@ -1,8 +1,8 @@
 class CreateTurns < ActiveRecord::Migration[7.0]
   def change
     create_table :turns do |t|
-      t.string :turn_date
-      t.string :hour
+      t.datetime :turn_date
+      t.time :hour
       t.string :reason_turn
       t.string :comment
       t.string :state # Pendiente - Atendido - Cancelado(no existe ya que lo elimino directamente)

@@ -2,11 +2,9 @@ require "test_helper"
 
 class TurnTest < ActiveSupport::TestCase
   def setup
-    fecha_hoy = DateTime.now()
-    fecha_2022_diciembre_18 = DateTime.civil_from_format :local, 2022, 12, 18
-    @dia_mes_anio_actual = fecha_hoy.strftime("%B %d, %Y")
-    @dia_mes_anio_diciembre_12 = fecha_2022_diciembre_18.strftime("%B %d, %Y")
-    @fecha_con_minutos_adelantados = DateTime.now() + 10*60
+    @fecha_actual = DateTime.now()
+    @fecha_2022_diciembre_18 = DateTime.civil_from_format :local, 2022, 12, 18
+
     #
     una_provincia = Province.new(name_province: "Buenos aires test")
     una_provincia.save
@@ -23,27 +21,27 @@ class TurnTest < ActiveSupport::TestCase
   end
 
   def test_valido_completo
-    un_turno_valido = Turn.new(turn_date: @dia_mes_anio_actual, hour: '08:00', reason_turn: "Renovacion de tarjeta test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
+    un_turno_valido = Turn.new(turn_date: @fecha_2022_diciembre_18, hour: @fecha_2022_diciembre_18, reason_turn: "Renovacion de tarjeta test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
     assert un_turno_valido.valid?
   end
   
   def test_valido_fk
-    un_turno_1 = Turn.new(turn_date: @dia_mes_anio_actual, hour: '12:00', reason_turn: "Renovacion de tarjeta test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
+    un_turno_1 = Turn.new(turn_date: @fecha_actual, hour: @fecha_2022_diciembre_18, reason_turn: "Renovacion de tarjeta test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
     un_turno_1.save
-    un_turno_2 = Turn.new(turn_date: @dia_mes_anio_diciembre_12, hour: '13:00', reason_turn: "Cambio de contraseña test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
+    un_turno_2 = Turn.new(turn_date: @fecha_2022_diciembre_18, hour: @fecha_2022_diciembre_18, reason_turn: "Cambio de contraseña test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
     assert un_turno_2.valid?
   end
 
   def test_no_valido_fk
-    un_turno_1 = Turn.new(turn_date: @dia_mes_anio_actual, hour: '12:00', reason_turn: "Renovacion de tarjeta test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
+    un_turno_1 = Turn.new(turn_date: @fecha_2022_diciembre_18, hour: @fecha_actual, reason_turn: "Renovacion de tarjeta test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
     un_turno_1.save
-    un_turno_2 = Turn.new(turn_date: @dia_mes_anio_actual, hour: '12:00', reason_turn: "Cambio de contraseña test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
+    un_turno_2 = Turn.new(turn_date: @fecha_2022_diciembre_18, hour: @fecha_2022_diciembre_18, reason_turn: "Cambio de contraseña test", subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
     assert_not un_turno_2.valid?
   end
 
   # Falta el motivo (o razon) del turno que tiene validacion obligatoria
   def test_no_valido
-    un_turno_no_valido = Turn.new(turn_date: @dia_mes_anio_actual, hour: '08:00', subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
+    un_turno_no_valido = Turn.new(turn_date: @fecha_2022_diciembre_18, hour: @fecha_2022_diciembre_18, subsidiary: @una_sucursal, state: 'Pendiente', user_client: @usuario_cliente)
     assert_not un_turno_no_valido.valid?
   end
 end

@@ -13,8 +13,10 @@ class Schedule < ApplicationRecord
       puts "Entre 2"
       errors.add(:hour_until, "La hora hasta no puede estar vacia")
     else
+      hour_since_str = hour_since.strftime("%H:%M")
+      hour_until_str = hour_until.strftime("%H:%M")
       puts "Entre 3"
-      if hour_since > hour_until
+      if hour_since_str > hour_until_str
         puts "Entre 4"
         errors.add(:hour_since, "La hora anterior no puede ser mayor a la posterior")
       end
