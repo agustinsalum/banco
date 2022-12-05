@@ -30,7 +30,8 @@
       <th scope="col">Direccion</th>
       <th scope="col">Telefono</th>
       <th scope="col">Localidad</th>
-      <th scope="col">Agregar horario</th>
+      <th scope="col">Ver horarios</th>
+      <th scope="col">Ver horarios</th>
       <th scope="col">Modificar</th>
       <th scope="col">Eliminar</th>
     </tr>
@@ -43,6 +44,11 @@
           <td> <%= sucursal.address %> </td>
           <td> <%= sucursal.phone %> </td>
           <td> <%= sucursal.locality.name_locality %> </td>
+
+          <td><%= link_to subsidiary_schedules_path(sucursal.id) do %>
+              <%= image_tag "calendar-date.svg", size: "20x20", class: "some class here" %>
+          </td>
+          <% end %>
           
           <td><%= link_to new_subsidiary_schedule_path(sucursal.id) do %>
               <%= image_tag "alarm.svg", size: "20x20", class: "some class here" %>

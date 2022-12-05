@@ -1,4 +1,5 @@
 class Schedule < ApplicationRecord
+  self.per_page = 4 # Cantidad de turnos por pagina
   validates :day_week, :hour_since, :hour_until, presence: true
   validates :day_week, uniqueness: { scope: :subsidiary_id }
   validate :hour_black_and_until_since_menor

@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :set_subsidiary
   def index
+    @schedules = @subsidiary.schedules.paginate(page: params[:page])
   end
 
   def show
@@ -23,6 +24,7 @@ class SchedulesController < ApplicationController
   end
 
   def edit
+    @subsidiary = Schedule.find(params[:id])
   end
 
   def update
