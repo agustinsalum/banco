@@ -7,30 +7,25 @@
             <%= form.text_field :name %>
         </div>
 
-         <div class="mb-3">
-            <%= form.label :role %><br>
-            <%= form.select :role, options_from_collection_for_select(@roles, :id, :role) %>
+        <div class="mb-3">
+            <%= form.label :role %>
+            <%= form.select :role, User.roles.keys %>
         </div>
         
-        <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email%>
+        <div class="mb-3">
+            <%= form.label :email %><br />
+            <%= form.email_field :email%>
         </div>
         
-        <div class="field">
-            <%= f.label :password %>
-            <%= f.password_field :password%>
+        <div class="mb-3">
+            <%= form.label :password %>
+            <%= form.password_field :password%>
         </div>
         
-        <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation%>
+        <div class="mb-3">
+            <%= form.label :password_confirmation %><br />
+            <%= form.password_field :password_confirmation%>
         </div>
-        
-        <div class="actions">
-            <%= f.submit "Registrarse" %>
-        </div>
-
 
         <%= form.submit :Enviar, class: 'btn btn-success'%> |
         <%= form.submit "Limpiar", :type => "reset", class: "btn btn-primary" %>

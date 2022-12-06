@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @nuevo_usuario = User.new
-    @roles = User.role
+    @user = User.new
   end
 
   def edit
