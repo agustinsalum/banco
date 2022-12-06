@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def new
     @nuevo_usuario = User.new
+    @roles = User.role
   end
 
   def edit
