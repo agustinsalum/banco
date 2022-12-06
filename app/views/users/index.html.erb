@@ -10,9 +10,9 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Crear usuario", new_user_path %> </button>
+<div> <%= link_to 'Crear usuario', new_user_path, :class => "btn btn-primary" %> </div>
 
-<%= will_paginate @todos_usuarios %>
+<%= will_paginate @users %>
 
 
 <table class="table">
@@ -29,28 +29,30 @@
     </tr>
   </thead>
   <tbody>
-    <% @todos_usuarios.each do |usuario| %>
+    <% @users.each do |user| %>
         <tr>
-          <th scope="row"> <%=usuario.id%> </th>
-          <td> <%= usuario.email %> </td>
-          <td> <%= usuario.name %> </td>
-          <td> <%= usuario.role %> </td>
+          <th scope="row"> <%=user.id%> </th>
+          <td> <%= user.email %> </td>
+          <td> <%= user.name %> </td>
+          <td> <%= user.role %> </td>
           
-          <% if usuario.subsidiary.nil? %> 
+          <% if user.subsidiary.nil? %> 
             <td> No posee </td>  
           <% else %>
-            <td> <%= usuario.subsidiary.address %></td>
+            <td> <%= user.subsidiary.name_subsidiary %></td>
           <% end %>
-
-          <% if usuario.id != current_user.id %>
-            <td><%= link_to user_perfil_path(usuario.id) do %>
-                <%= image_tag "person-fill.svg", size: "20x20", class: "some class here" %>
-            <% end %></td>
-            <td><%= link_to edit_user_path(usuario.id) do %>
-                <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
-            <% end %></td>
-            <td><%= link_to user_path(usuario.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
-                <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+          
+          <td><%= link_to user_path(user.id) do %>
+            <%= image_tag "person-fill.svg", size: "20x20", class: "some class here" %>
+          <% end %></td>
+          
+          <td><%= link_to edit_user_path(user.id) do %>
+            <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+          <% end %></td>
+          
+          <% if user.id != current_user.id %>
+            <td><%= link_to user_path(user.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
+              <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
           <% end %></td>
         </tr>
@@ -58,4 +60,4 @@
     </tbody>
 </table>
 
-<%= will_paginate @todos_usuarios, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
