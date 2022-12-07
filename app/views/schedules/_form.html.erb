@@ -5,7 +5,7 @@
     <div class="card-body">
         <div class="mb-3">
             <%= form.label :day_week %><br>
-            <%= form.select :day_week, ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes'] %>
+            <%= form.select :day_week, [@days[0],@days[1],@days[2],@days[3],@days[4]] %>
         </div>
 
         <div class="mb-3">

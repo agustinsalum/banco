@@ -4,6 +4,12 @@ class Schedule < ApplicationRecord
   validates :day_week, uniqueness: { scope: :subsidiary_id }
   validate :hour_black_and_until_since_menor
   belongs_to :subsidiary
+  
+  @@days = [ 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes' ]
+
+  def self.days_week
+    @@days
+  end
 
   def hour_black_and_until_since_menor
     if hour_since.nil?

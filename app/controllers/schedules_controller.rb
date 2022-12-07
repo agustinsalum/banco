@@ -9,13 +9,14 @@ class SchedulesController < ApplicationController
 
   def new
     @schedule = Schedule.new
+    @days = Schedule.days_week
   end
 
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.subsidiary = @subsidiary
     if @schedule.save()
-      flash[:success] = "Se creo satisfactoriamente el horario en el dia #{@schedule.day_week} entre #{@schedule.hour_since} y #{@schedule.hour_until} para la sucursal #{@subsidiary.name_subsidiary}"
+      flash[:success] = "Se creo satisfactoriamente el horario en el dia #{@schedule.day_week} entre #{@schedule.hour_since.strftime("%H:%M")} y #{@schedule.hour_until.strftime("%H:%M")} para la sucursal #{@subsidiary.name_subsidiary}"
     else
       errores = @schedule.errors.full_messages
       flash[:danger] = "Error: #{errores}"
