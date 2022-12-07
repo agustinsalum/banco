@@ -6,6 +6,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @roles = User.roles.keys
+  end
+
+  def create
+    puts "ENTREEEEEEEEEEEEEEEEEEEEEEEEE"
   end
 
   def edit

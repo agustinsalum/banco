@@ -6,7 +6,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   # Campos adicionales
-  enum role: { administrador: 1, empleado_bancario: 2, cliente: 3 }  
+
+  # Enumeradores
+  enum role: { Administrador: 1, Empleado: 2, Cliente: 3 }
+
+  # Validaciones y asociaciones
+
   validates :name, presence: true # Rol por defecto 3
   belongs_to :subsidiary, optional: true
   has_many :my_turns, class_name: :Turn, foreign_key: :user_client, dependent: :destroy
