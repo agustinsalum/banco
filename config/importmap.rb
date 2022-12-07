@@ -10,5 +10,5 @@ pin "popper", to: 'popper.js', preload: true
 pin "bootstrap", to: 'bootstrap.min.js', preload: true
 
 # Mis archivos javascript
-pin "sucursal_empleado"
+pin "soy_empleado"
 
