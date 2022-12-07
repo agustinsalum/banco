@@ -14,7 +14,7 @@
         </div>
         
         <div class="mb-3" id="select_sucursal" style="visibility:hidden;"> 
-            <%= form.select :subsidiary_id, options_from_collection_for_select(@subsidiaries, :id, :name_subsidiary, include_blank: "Seleccione sucursal") %>
+            <%= form.select :subsidiary_id, options_from_collection_for_select(@subsidiaries, :id, :name_subsidiary) %>
         </div>
 
         <button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="select_sucursal"> Apretame </button>

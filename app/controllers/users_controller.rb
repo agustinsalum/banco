@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # Aunque logre ocultar el select, el mismo sigue estando
+    @user.subsidiary_id = nil if (@user.role == 'Administrador')
     if @user.save()
       flash[:success] = "El usuario con nombre #{@user.name} ha sido creado de manera satisfactoria"
     else
