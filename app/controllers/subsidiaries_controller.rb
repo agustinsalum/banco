@@ -1,7 +1,7 @@
 class SubsidiariesController < ApplicationController
 
   def index
-    @todas_sucursales = Subsidiary.all.paginate(page: params[:page])
+    @subsidiaries = Subsidiary.all.paginate(page: params[:page])
   end
 
   def show

@@ -10,9 +10,10 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<button type="button" class="btn btn-primary btn-lg"> <%= link_to "Solicitar turno", new_turn_path %> </button>
 
-<%= will_paginate @turnos_usuario_actual %>
+<div> <%= link_to 'Solicitar turno', new_turn_path, :class => "btn btn-primary" %> </div>
+
+<%= will_paginate @turns %>
 
 
 <table class="table">
@@ -29,20 +30,20 @@
     </tr>
   </thead>
   <tbody>
-  <% @turnos_usuario_actual.each do |turno| %>
+  <% @turns.each do |turn| %>
       <tr>
-          <th scope="row"> <%=turno.id%> </th>
+          <th scope="row"> <%=turn.id%> </th>
           <td> <%= '10/11/22' %> </td>
           <td> <%= '08:00' %> </td>
-          <td> <%= turno.reason_turn %> </td>
-          <td> <%= turno.state %> </td>
-          <td> <%= turno.subsidiary.address %> </td>
+          <td> <%= tur.reason_turn %> </td>
+          <td> <%= tur.state %> </td>
+          <td> <%= tur.subsidiary.address %> </td>
           
-          <% if turno.state == 'Pendiente'%>
-            <td><%= link_to edit_turn_path(turno.id) do %>
+          <% if turn.state == 'Pendiente'%>
+            <td><%= link_to edit_turn_path(tur.id) do %>
                 <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
-            <td><%= link_to turn_path(turno.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el turno con fecha?"  } do %>
+            <td><%= link_to turn_path(tur.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el turno con fecha?"  } do %>
                 <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
           <% end %></td>
@@ -51,7 +52,7 @@
   </tbody>
 </table>
 
-<% if @turnos_usuario_actual.empty? %>
+<% if @turns.empty? %>
   <p class="text-primary">No posee turnos por el momento</p>
 <% end %>
 

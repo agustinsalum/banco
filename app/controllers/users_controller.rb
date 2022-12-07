@@ -7,10 +7,10 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @roles = User.roles.keys
+    @subsidiaries = Subsidiary.all
   end
 
   def create
-    puts "ENTREEEEEEEEEEEEEEEEEEEEEEEEEEE"
     @user = User.new(user_params)
     if @user.save()
       flash[:success] = "El usuario con nombre #{@user.name} ha sido creado de manera satisfactoria"

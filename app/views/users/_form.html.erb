@@ -8,10 +8,17 @@
             <%= form.text_field :name %>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" onchange="soy_empleado(this.value);">
             <%= form.label :role %>
             <%= form.select :role, [@roles[0],@roles[1]] %>
         </div>
+        
+        <div class="mb-3" id="select_sucursal" style="visibility:hidden;"> 
+            <%= form.select :subsidiary_id, options_from_collection_for_select(@subsidiaries, :id, :name_subsidiary, include_blank: "Seleccione sucursal") %>
+        </div>
+
+        <button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="select_sucursal"> Apretame </button>
+
         
         <div class="mb-3">
             <%= form.label :email %><br />
@@ -33,3 +40,15 @@
     </div>
 </div>
 <% end %>
+
+<!-- FUNCIONES JAVASCRIPT -->
+
+<script type="text/javascript">
+    function soy_empleado(valor) {
+      if (valor == "Administrador"){
+        document.getElementById("select_sucursal").style.visibility = "hidden"
+        }else{
+          document.getElementById("select_sucursal").style.visibility = "visible"
+          }
+      }
+</script>

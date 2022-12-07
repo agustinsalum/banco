@@ -3,20 +3,19 @@ class TurnsController < ApplicationController
   # new muestra el formulario, mientras que create procesa el formulario
   # Selecciona la provincia
   def new
-    @todas_provincias = Province.all
+    @provinces = Province.all
   end
 
   # Selecciona la localidad
   def select_localities
-    @una_provincia = Province.find(params[:provincia])
-    @localidades = @una_provincia.localities
+    @provinces = Province.find(params[:provincia])
+    @localities = @provinces.localities
   end
 
   # Selecciona la sucursal
   def select_subsidiaries
-    @una_localidad = Locality.find(params[:localidad])
-    @sucursales = @una_localidad.subsidiaries
-    puts @sucursales.empty? 
+    @Locality = Locality.find(params[:localidad])
+    @subsidiaries = @una_localidad.subsidiaries
   end
 
   # Selecciona el turno

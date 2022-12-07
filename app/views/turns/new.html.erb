@@ -8,11 +8,11 @@
 
 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="boton_provincia(this.value);">
   <option selected>Selecciona una provincia</option>
-    <% @todas_provincias.each do |p| %>
+    <% @provinces.each do |p| %>
       <%= options_for_select([['Nombre: ' + p.name_province]]) %>
 </select>
 
-<button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="boton"> <%= link_to "Aceptar", turns_select_localities_path(:provincia => p.id) %> </button>
+<button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="boton"> Apretame </button>
 <% end %>
 
 

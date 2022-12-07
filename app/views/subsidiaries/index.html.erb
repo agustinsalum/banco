@@ -19,7 +19,7 @@
 
 <div> <%= link_to 'Crear sucursal', new_subsidiary_path, :class => "btn btn-primary" %> </div>
 
-<%= will_paginate @todas_sucursales %>
+<%= will_paginate @subsidiaries %>
 
 
 <table class="table">
@@ -37,28 +37,28 @@
     </tr>
   </thead>
   <tbody>
-  <% @todas_sucursales.each do |sucursal| %>
+  <% @subsidiaries.each do |subsidiary| %>
       <tr>
-          <th scope="row"> <%=sucursal.id%> </th>
-          <td> <%= sucursal.name_subsidiary %> </td>
-          <td> <%= sucursal.address %> </td>
-          <td> <%= sucursal.phone %> </td>
-          <td> <%= sucursal.locality.name_locality %> </td>
+          <th scope="row"> <%=subsidiary.id%> </th>
+          <td> <%= subsidiary.name_subsidiary %> </td>
+          <td> <%= subsidiary.address %> </td>
+          <td> <%= subsidiary.phone %> </td>
+          <td> <%= subsidiary.locality.name_locality %> </td>
 
-          <td><%= link_to subsidiary_schedules_path(sucursal.id) do %>
+          <td><%= link_to subsidiary_schedules_path(subsidiary.id) do %>
               <%= image_tag "calendar-date.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
           
-          <td><%= link_to new_subsidiary_schedule_path(sucursal.id) do %>
+          <td><%= link_to new_subsidiary_schedule_path(subsidiary.id) do %>
               <%= image_tag "alarm.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
-          <td><%= link_to edit_subsidiary_path(sucursal.id) do %>
+          <td><%= link_to edit_subsidiary_path(subsidiary.id) do %>
               <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
-          <td><%= link_to subsidiary_path(sucursal.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar la sucursal"  } do %>
+          <td><%= link_to subsidiary_path(subsidiary.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar la sucursal"  } do %>
               <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
@@ -67,9 +67,9 @@
   </tbody>
 </table>
 
-<% if @todas_sucursales.empty? %>
+<% if @subsidiaries.empty? %>
   <p class="text-primary">No existen sucursales cargadas</p>
 <% end %>
 
 
-<%= will_paginate @todas_sucursales, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<%= will_paginate @subsidiary, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
