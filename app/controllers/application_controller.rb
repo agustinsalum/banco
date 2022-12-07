@@ -1,11 +1,7 @@
 class ApplicationController < ActionController::Base
     before_action :configurar_parametros_adicionales_permitidos, if: :devise_controller?
-
-    #before_action do
-    #    resource = controller_name.singularize.to_sym
-    #    method = "#{resource}_params"
-    #    params[resource] &&= send(method) if respond_to?(method, true)
-    #end
+    #prepend_before_action :require_no_authentication, only: :cancel
+    #prepend_before_action :require_no_authentication, only: [:create, :cancel]
 
     protected
   

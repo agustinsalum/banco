@@ -10,11 +10,31 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts "ENTREEEEEEEEEEEEEEEEEEEEEEEEE"
+    puts "ENTREEEEEEEEEEEEEEEEEEEEEEEEEEE"
+    @user = User.new(user_params)
+    if @user.save()
+      flash[:success] = "El usuario con nombre #{@user.name} ha sido creado de manera satisfactoria"
+    else
+      errores = @user.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
+    end
+    redirect_to users_path 
   end
 
   def edit
-    @usuario = User.find(params[:id])
+    @user = User.find(params[:id])
+    @roles = User.roles.keys
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "El usuario se edito correctamente"
+    else
+      errores = @user.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
+    end
+    redirect_to users_path
   end
 
   def show
@@ -32,6 +52,14 @@ class UsersController < ApplicationController
 
   def perfil
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :name, :role, :password, :password_confirmation, :subsidiary_id)
+  end
+
+
 
 
 end
