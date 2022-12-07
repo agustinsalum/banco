@@ -1,8 +1,16 @@
 
 <% flash.each do |flash_type, message| %>
-<div class="alert alert-success" role="alert">
-   <%= message %>
-</div>
+  <% if flash[:success] %>
+    <div class="alert alert-success" role="alert">
+      <%= message %>
+    </div>
+  <% else %>
+    <% if flash[:danger] %>
+      <div class="alert alert-danger" role="alert">
+       <%= message %>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
 
 <h2>Gestion de usuarios</h2>

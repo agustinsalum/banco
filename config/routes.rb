@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  # Rutas devise y controlador users
-  devise_for :users
+  # Rutas devise
+  devise_for :users, path_names: {
+    # https://github.com/heartcombo/devise#configuring-routes
+    # Me permite crear usuarios
+    # Debemos especificar el path para registro, asi evitamos la colision
+    # enmascarando la ruta
+    registration: 'register'
+  }
+
   resources :users do
     # Para que no pida parametros
     collection do
