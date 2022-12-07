@@ -6,8 +6,6 @@
 
 <p><em> Seleccione el dia de la semana y el horario</em></p>
 
-<%= form_for @schedule, url: subsidiary_schedules_path, html: { method: :post } do |form| %>
-   <%= render 'form', form: form %>
-<% end %>
+   <%= render 'form'%>
 
 <%= link_to 'Volver', subsidiaries_path , class: 'btn,btn-secondary' %>

@@ -6,8 +6,6 @@
 
 <p><em> Modifique el horario</em></p>
 
-<%= form_for @schedule, url: subsidiary_schedule_path, html: { method: :put } do |form| %>
-   <%= render 'form', form: form %>
-<% end %>
+   <%= render 'form'%>
 
 <%= link_to 'Volver', subsidiary_schedules_path , class: 'btn,btn-secondary' %>
