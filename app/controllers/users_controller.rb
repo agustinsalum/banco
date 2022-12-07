@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @roles = User.roles.keys
+    @subsidiaries = Subsidiary.all
   end
 
   def update
