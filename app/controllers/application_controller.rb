@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
     before_action :configurar_parametros_adicionales_permitidos, if: :devise_controller?
-    #prepend_before_action :require_no_authentication, only: :cancel
-    #prepend_before_action :require_no_authentication, only: [:create, :cancel]
+
+    rescue_from CanCan::AccessDenied do |exception|
+        redirect_to :back, :alert => exception.message
+      end
 
     protected
   

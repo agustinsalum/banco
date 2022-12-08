@@ -1,4 +1,7 @@
 class LocalitiesController < ApplicationController
+  load_and_authorize_resource
+  authorize_resource :locality
+
   def index
     @localities = Locality.all.paginate(page: params[:page])
   end
