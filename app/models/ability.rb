@@ -7,13 +7,13 @@ class Ability
 
     if user.role == 'Administrador'
 
-      # Puedo eliminar a todos los usuarios, menos a mi mismo
+      # Puedo eliminar a todos los usuarios, salvo a mi mismo
       can :destroy, User do |u|
         u.id != user.id
       end
 
       # Privilegios totales
-      can :manage, User
+      can [ :read, :show, :create, :update ], User
       can :manage, Subsidiary
       can :manage, Locality
       can :manage, Schedule
@@ -28,23 +28,27 @@ class Ability
       # Puede solamente visualizar los horarios de las sucursales
       can :read, Schedule
 
+      # Puede solamente visualizar la informacion de los usuario y sus perfiles
+      can [ :read, :show ], User
+
     else # Cliente
 
-      # No puede acceder ni hacer operaciones para las localidades, sucursales y horarios
+      # No puede acceder ni hacer operaciones para las localidades, sucursales, horarios y usuarios
       cannot :manage, Locality
       cannot :manage, Subsidiary
       cannot :manage, Schedule
-      
-      can :read, User do |u|
-        u.id == user.id
-      end
+      cannot :manage, User
 
-      can :update, User do |u|
-        u.id == user.id
-      end
+      #can :read, User do |u|
+      #  u.id == user.id
+      #end
+
+      #can :update, User do |u|
+      #  u.id == user.id
+      #end
 
       # Solo puede crear turnos
-      can :create, Turn
+      #can :create, Turn
     end
 
 

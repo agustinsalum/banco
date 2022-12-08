@@ -18,7 +18,9 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<div> <%= link_to 'Crear usuario', new_user_path, :class => "btn btn-primary" %> </div>
+<% if can? :create, User %>
+  <div> <%= link_to 'Crear usuario', new_user_path, :class => "btn btn-primary" %> </div>
+<% end %>
 
 <%= will_paginate @users %>
 
@@ -32,8 +34,12 @@
       <th scope="col">Rol</th>
       <th scope="col">Sucursal</th>
       <th scope="col">Ver perfil</th>
-      <th scope="col">Modificar</th>
-      <th scope="col">Eliminar</th>
+      <% if can? :update, User %>
+        <th scope="col">Modificar</th>
+      <% end %>
+      <% if can? :destroy, User %>
+        <th scope="col">Eliminar</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -53,12 +59,14 @@
           <td><%= link_to user_path(user.id) do %>
             <%= image_tag "person-fill.svg", size: "20x20", class: "some class here" %>
           <% end %></td>
+
+          <% if can? :update, User %>
+            <td><%= link_to edit_user_path(user.id) do %>
+              <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+            <% end %></td>
+          <% end %>
           
-          <td><%= link_to edit_user_path(user.id) do %>
-            <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
-          <% end %></td>
-          
-          <% if user.id != current_user.id %>
+          <% if can? :destroy, user %>
             <td><%= link_to user_path(user.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
               <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
