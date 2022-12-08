@@ -18,9 +18,11 @@
             <button type="button" class="btn btn-dark"> <%= link_to "Gestionar Usuarios", users_path %> </button>
           </li>
 
-          <li class="nav-item">
-            <button type="button" class="btn btn-dark"> <%= link_to "Gestionar Sucursales", subsidiaries_path %> </button>
-          </li>
+          <% if can? :read, Subsidiary %> 
+            <li class="nav-item">
+              <button type="button" class="btn btn-dark"> <%= link_to "Gestionar Sucursales", subsidiaries_path %> </button>
+            </li>
+          <% end %>
 
           <% if can? :read, Locality %> 
             <li class="nav-item">

@@ -17,7 +17,9 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<div> <%= link_to 'Crear sucursal', new_subsidiary_path, :class => "btn btn-primary" %> </div>
+<% if can? :create, Subsidiary %>
+  <div> <%= link_to 'Crear sucursal', new_subsidiary_path, :class => "btn btn-primary" %> </div>
+<% end %>
 
 <%= will_paginate @subsidiaries %>
 
@@ -32,8 +34,12 @@
       <th scope="col">Localidad</th>
       <th scope="col">Ver horarios</th>
       <th scope="col">Asignar horarios</th>
-      <th scope="col">Modificar</th>
-      <th scope="col">Eliminar</th>
+      <% if can? :update, Subsidiary %>
+        <th scope="col">Modificar</th>
+      <% end %>
+      <% if can? :destroy, Subsidiary %>
+        <th scope="col">Eliminar</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -54,13 +60,19 @@
               <%= image_tag "alarm.svg", size: "20x20", class: "some class here" %>
           </td>
           <% end %>
-          <td><%= link_to edit_subsidiary_path(subsidiary.id) do %>
-              <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
-          </td>
+
+          <% if can? :update, Subsidiary %>
+            <td><%= link_to edit_subsidiary_path(subsidiary.id) do %>
+                <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+            </td>
+            <% end %>
           <% end %>
-          <td><%= link_to subsidiary_path(subsidiary.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar la sucursal"  } do %>
-              <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
-          </td>
+
+          <% if can? :destroy, Subsidiary %>
+            <td><%= link_to subsidiary_path(subsidiary.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar la sucursal"  } do %>
+                <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+            </td>
+            <% end %>
           <% end %>
       </tr>
     <% end %>

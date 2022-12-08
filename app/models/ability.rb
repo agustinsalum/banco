@@ -17,15 +17,18 @@ class Ability
       can :manage, Subsidiary
       can :manage, Locality
 
-    elsif user.role == 'Bancario'
-      
+    elsif user.role == 'Empleado'
       # No puede acceder ni hacer operaciones para las localidades
       cannot :manage, Locality
+      
+      # Puede solamente visualizar informacion de sucursales
+      can :read, Subsidiary
 
     else # Cliente
 
-      # No puede acceder ni hacer operaciones para las localidades
+      # No puede acceder ni hacer operaciones para las localidades y sucursales
       cannot :manage, Locality
+      cannot :manage, Subsidiary
       
       can :read, User do |u|
         u.id == user.id
