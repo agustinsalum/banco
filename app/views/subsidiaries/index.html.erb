@@ -32,8 +32,12 @@
       <th scope="col">Direccion</th>
       <th scope="col">Telefono</th>
       <th scope="col">Localidad</th>
-      <th scope="col">Ver horarios</th>
-      <th scope="col">Asignar horarios</th>
+      <% if can? :read, Schedule %>
+        <th scope="col">Ver horarios</th>
+      <% end %>
+      <% if can? :create, Schedule %>
+        <th scope="col">Asignar horarios</th>
+      <% end %>
       <% if can? :update, Subsidiary %>
         <th scope="col">Modificar</th>
       <% end %>
@@ -51,14 +55,18 @@
           <td> <%= subsidiary.phone %> </td>
           <td> <%= subsidiary.locality.name_locality %> </td>
 
-          <td><%= link_to subsidiary_schedules_path(subsidiary.id) do %>
+          <% if can? :read, Schedule %>
+            <td><%= link_to subsidiary_schedules_path(subsidiary.id) do %>
               <%= image_tag "calendar-date.svg", size: "20x20", class: "some class here" %>
-          </td>
+            </td>
+            <% end %>
           <% end %>
           
-          <td><%= link_to new_subsidiary_schedule_path(subsidiary.id) do %>
-              <%= image_tag "alarm.svg", size: "20x20", class: "some class here" %>
-          </td>
+          <% if can? :create, Schedule %>
+            <td><%= link_to new_subsidiary_schedule_path(subsidiary.id) do %>
+                <%= image_tag "alarm.svg", size: "20x20", class: "some class here" %>
+            </td>
+            <% end %>
           <% end %>
 
           <% if can? :update, Subsidiary %>

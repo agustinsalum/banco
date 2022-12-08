@@ -27,8 +27,12 @@
       <th scope="col">Dia de la semana</th>
       <th scope="col">Hora desde</th>
       <th scope="col">Hora hasta</th>
-      <th scope="col">Modificar</th>
-      <th scope="col">Eliminar</th>
+      <% if can? :update, Schedule %>
+        <th scope="col">Modificar</th>
+      <% end %>
+      <% if can? :destroy, Schedule %>
+        <th scope="col">Eliminar</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -39,14 +43,18 @@
           <td> <%= "#{schedule.hour_since.strftime("%H:%M")}" %> </td>
           <td> <%= "#{schedule.hour_until.strftime("%H:%M")}" %> </td>
 
-          <td><%= link_to edit_subsidiary_schedule_path(@subsidiary.id,schedule.id) do %>
-              <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
-          </td>
+          <% if can? :update, Schedule %>
+            <td><%= link_to edit_subsidiary_schedule_path(@subsidiary.id,schedule.id) do %>
+                <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
+            </td>
+            <% end %>
           <% end %>
           
-          <td><%= link_to subsidiary_schedule_path(@subsidiary.id,schedule.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el horario"  } do %>
-              <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
-          </td>
+          <% if can? :destroy, Schedule %>
+            <td><%= link_to subsidiary_schedule_path(@subsidiary.id,schedule.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el horario"  } do %>
+                <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
+            </td>
+            <% end %>
           <% end %>
       </tr>
     <% end %>
