@@ -6,7 +6,6 @@ class Ability
   def initialize(user)
 
     if user.role == 'Administrador'
-      return unless user.role == 'Administrador'
 
       # Puedo eliminar a todos los usuarios, menos a mi mismo
       can :destroy, User do |u|
@@ -19,13 +18,14 @@ class Ability
       can :manage, Locality
 
     elsif user.role == 'Bancario'
-      return unless user.role == 'Bancario'
+      
+      # No puede acceder ni hacer operaciones para las localidades
+      cannot :manage, Locality
 
     else # Cliente
 
-      return unless user.role  == 'Cliente'
-
-      cannot [:read], Locality
+      # No puede acceder ni hacer operaciones para las localidades
+      cannot :manage, Locality
       
       can :read, User do |u|
         u.id == user.id
@@ -35,7 +35,7 @@ class Ability
         u.id == user.id
       end
 
-
+      # Solo puede crear turnos
       can :create, Turn
     end
 
