@@ -7,18 +7,31 @@ class Ability
 
     if user.role == 'Administrador'
 
-      # Puedo eliminar a todos los usuarios, salvo a mi mismo
+      # Privilegios totales
+      can :manage, Subsidiary
+      can :manage, Locality
+      can :manage, Schedule
+      can [ :read, :show, :create, :update ], User
+
+
+      # Puede eliminar a todos los usuarios, pero no a mi mismo
       can :destroy, User do |u|
         u.id != user.id
       end
 
-      # Privilegios totales
-      can [ :read, :show, :create, :update ], User
-      can :manage, Subsidiary
-      can :manage, Locality
-      can :manage, Schedule
+      # Puede editar y cancelar turnos
+      can [ :update, :destroy ], Turn do |t|
+        t.user_client != nil
+      end
+
+      # No puede crear turnos
+      cannot :create, Turn
+
+
+
 
     elsif user.role == 'Empleado'
+
       # No puede acceder ni hacer operaciones para las localidades
       cannot :manage, Locality
 
@@ -30,6 +43,12 @@ class Ability
 
       # Puede solamente visualizar la informacion de los usuario y sus perfiles
       can [ :read, :show ], User
+      
+      # No puede crear, actualizar ni eliminar
+      cannot [ :create, :update, :destroy], Turn
+      
+      # puede atender turnos
+      # can [ ], Turn
 
     else # Cliente
 
@@ -39,16 +58,14 @@ class Ability
       cannot :manage, Schedule
       cannot :manage, User
 
-      #can :read, User do |u|
-      #  u.id == user.id
-      #end
+      # Puede crear turnos
+      can :create, Turn
 
-      #can :update, User do |u|
-      #  u.id == user.id
-      #end
+      # Puede editar y cancelar turnos propios
+      can [ :update, :destroy ], Turn do |t|
+        t.user_client_id == user.id
+      end
 
-      # Solo puede crear turnos
-      #can :create, Turn
     end
 
 

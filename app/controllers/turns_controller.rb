@@ -11,8 +11,8 @@ class TurnsController < ApplicationController
     elsif (current_user.role == 'Empleado')
       # Todos los turnos con estado pendiente, pertenecientes a la sucursal donde trabaja
 
-      subsidiary = current_user.subsidiary
-      turns = Turn.where(subsidiary: subsidiary)
+      @subsidiary = current_user.subsidiary
+      turns = Turn.where(subsidiary: @subsidiary)
       @turns = turns.paginate(page: params[:page])
     else
       # Cliente
