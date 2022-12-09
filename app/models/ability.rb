@@ -19,7 +19,7 @@ class Ability
         u.id != user.id
       end
 
-      # Puede editar y cancelar turnos
+      # Puede editar y cancelar todos los turnos
       can [ :update, :destroy ], Turn do |t|
         t.user_client != nil
       end

@@ -4,22 +4,22 @@ class TurnsController < ApplicationController
     # https://guides.rubyonrails.org/active_record_querying.html
 
     if (current_user.role == 'Administrador')
-      # Todos los turnos pendientes o atendidos, menos los cancelados
+      # Todos los turnos pendientes o atendidos, menos los cancelados (orden ascendente)
 
       turns = Turn.where(state: 'Pendiente').or(Turn.where(state: 'Atendido'))
-      @turns = turns.paginate(page: params[:page])
+      @turns = turns.paginate(page: params[:page]).order("turn_date ASC")
     elsif (current_user.role == 'Empleado')
-      # Todos los turnos con estado pendiente, pertenecientes a la sucursal donde trabaja
+      # Todos los turnos con estado pendiente, pertenecientes a la sucursal donde trabaja (orden ascendente)
 
       @subsidiary = current_user.subsidiary
       turns = Turn.where(subsidiary: @subsidiary)
-      @turns = turns.paginate(page: params[:page])
+      @turns = turns.paginate(page: params[:page]).order("turn_date ASC")
     else
       # Cliente
-      # Todos los turnos del cliente
+      # Todos los turnos del cliente (orden ascendente)
       
       turns = Turn.where(user_client_id: current_user)
-      @turns = turns.paginate(page: params[:page])
+      @turns = turns.paginate(page: params[:page]).order("turn_date ASC")
     end
   end
 
