@@ -5,7 +5,7 @@ class CreateTurns < ActiveRecord::Migration[7.0]
       t.time :hour
       t.string :reason_turn
       t.string :comment
-      t.string :state # Pendiente - Atendido - Cancelado(no existe ya que lo elimino directamente)
+      t.string :state # Pendiente - Atendido - Cancelado
       # sucursal
       t.references :subsidiary, null: false, foreign_key: true
       # doble foreign_key

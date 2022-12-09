@@ -1,44 +1,41 @@
 class TurnsController < ApplicationController
 
-  # new muestra el formulario, mientras que create procesa el formulario
-  # Selecciona la provincia
+  def index
+    # https://guides.rubyonrails.org/active_record_querying.html
+
+    if (current_user.role == 'Administrador')
+      # Todos los turnos pendientes o atendidos, menos los cancelados
+
+      turns = Turn.where(state: 'Pendiente').or(Turn.where(state: 'Atendido'))
+      @turns = turns.paginate(page: params[:page])
+    elsif (current_user.role == 'Empleado')
+      # Todos los turnos con estado pendiente, pertenecientes a la sucursal donde trabaja
+
+      subsidiary = current_user.subsidiary
+      turns = Turn.where(subsidiary: subsidiary)
+      @turns = turns.paginate(page: params[:page])
+    else
+      # Cliente
+      # Todos los turnos del cliente
+      
+      turns = Turn.where(user_client_id: current_user)
+      @turns = turns.paginate(page: params[:page])
+    end
+  end
+
   def new
     @provinces = Province.all
   end
 
-  # Selecciona la localidad
-  def select_localities
-    @provinces = Province.find(params[:provincia])
-    @localities = @provinces.localities
-  end
-
-  # Selecciona la sucursal
-  def select_subsidiaries
-    @Locality = Locality.find(params[:localidad])
-    @subsidiaries = @una_localidad.subsidiaries
-  end
-
-  # Selecciona el turno
-  def select_turn
-    @una_sucursal = Subsidiary.find(params[:sucursal])
-    @turnos = @una_sucursal.schedules
-    puts "holaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    puts @turnos.empty?
-  end
 
   def create
   end
 
-  def index
-    # https://guides.rubyonrails.org/active_record_querying.html
-    @turns = Turn.where(user_client_id: current_user)
-    @turns = @turns.paginate(page: params[:page])
-  end
+
 
   def show
   end
 
-  # Edit muestra el formulario, mientras que update procesa el formulario
   def edit
   end
 

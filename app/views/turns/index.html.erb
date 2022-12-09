@@ -23,8 +23,10 @@
       <th scope="col">Fecha</th>
       <th scope="col">Hora</th>
       <th scope="col">Motivo</th>
+      <th scope="col">Comentario</th>
       <th scope="col">Estado</th>
       <th scope="col">Sucursal</th>
+      <th scope="col">Empleado</th>
       <th scope="col">Modificar</th>
       <th scope="col">Eliminar</th>
     </tr>
@@ -33,17 +35,28 @@
   <% @turns.each do |turn| %>
       <tr>
           <th scope="row"> <%=turn.id%> </th>
-          <td> <%= '10/11/22' %> </td>
-          <td> <%= '08:00' %> </td>
-          <td> <%= tur.reason_turn %> </td>
-          <td> <%= tur.state %> </td>
-          <td> <%= tur.subsidiary.address %> </td>
+          <td> <%= turn.turn_date.strftime('%m/%d/%Y') %> </td>
+          <td> <%= turn.hour.strftime("%H:%M") %> </td>
+          <td> <%= turn.reason_turn %> </td>
+          <% if turn.comment.nil? %>
+            <td><p> Sin comentarios </p></td>
+          <% else %>
+            <td> <%= turn.comment %> </td>
+          <% end %>
+          <td> <%= turn.state %> </td>
+          <td> <%= turn.subsidiary.name_subsidiary %> </td>
+          <% if turn.user_bank.nil? %>
+            <td><p> No atendido por nadie </p></td>
+          <% else %>
+            <td> <%= turn.user_bank.name %> </td>
+          <% end %>
           
           <% if turn.state == 'Pendiente'%>
-            <td><%= link_to edit_turn_path(tur.id) do %>
+            <td><%= link_to edit_turn_path(turn.id) do %>
                 <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
-            <td><%= link_to turn_path(tur.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el turno con fecha?"  } do %>
+
+            <td><%= link_to turn_path(turn.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el turno con fecha?"  } do %>
                 <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
           <% end %></td>
@@ -57,4 +70,4 @@
 <% end %>
 
 
-<%= will_paginate @turnos_usuario_actual, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<%= will_paginate @turns, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
