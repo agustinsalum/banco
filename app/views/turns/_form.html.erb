@@ -1,0 +1,29 @@
+<%= form_with model: @turn do |form| %>
+  <div class="card">
+    <div class="card-body">
+        
+        <div class="mb-3">
+            <%= form.label :turn_date %><br>
+            <%= form.date_field :turn_date %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :hour %><br>
+            <%= form.time_field :hour %>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :reason %><br>
+            <%= form.text_area :reason %>
+        </div>
+        
+        <div class="mb-3">
+            <%= form.label :subsidiary %><br>
+            <%= form.select :subsidiary_id, options_from_collection_for_select(@subsidiaries, :id, :name_subsidiary) %>
+        </div>
+
+        <%= form.submit :Enviar, class: 'btn btn-success'%> |
+        <%= form.submit "Limpiar", :type => "reset", class: "btn btn-primary" %>
+    </div>
+</div>
+<% end %>

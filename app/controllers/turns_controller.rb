@@ -24,7 +24,8 @@ class TurnsController < ApplicationController
   end
 
   def new
-    @provinces = Province.all
+    @turn = Turn.new
+    @subsidiaries = Subsidiary.all
   end
 
 

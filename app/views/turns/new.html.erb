@@ -1,20 +1,14 @@
-<p class="fs-2">Formulario para obtener un turno</p>
+<p class="fs-2">Formulario para solicitar un turno</p>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<p><em>Seleccione la provincia en la que se encuentra para que el sistema le muestre las diferentes localidades que cuentan con sucursales. Seleccione la provincia y presione "aceptar".</em></p>
+<p><em> Ingrese la fecha y hora, motivo y sucursal en la cual quiere solicitar un turno. Tenga en cuenta que el sistema valida que la hora debe estar dentro de los horarios definidos por dicha sucursal".</em></p>
 
-<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="boton_provincia(this.value);">
-  <option selected>Selecciona una provincia</option>
-    <% @provinces.each do |p| %>
-      <%= options_for_select([['Nombre: ' + p.name_province]]) %>
-</select>
-
-<button style="visibility:hidden;" type="button" class="btn btn-primary btn-lg" id="boton"> Apretame </button>
-<% end %>
-
+<%= render 'form' %>
+        
+<%= link_to 'Volver', turns_path , class: 'btn,btn-secondary' %>
 
 
 
