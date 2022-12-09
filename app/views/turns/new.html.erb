@@ -4,24 +4,8 @@
    <hr class="bg-danger border-2 border-top border-danger">
 </p>
 
-<p><em> Ingrese la fecha y hora, motivo y sucursal en la cual quiere solicitar un turno. Tenga en cuenta que el sistema valida que la hora debe estar dentro de los horarios definidos por dicha sucursal".</em></p>
+<p><em> Ingrese la fecha y hora, motivo y sucursal en la cual quiere ser atendido. Tenga en cuenta que el sistema valida que la hora debe estar dentro de los horarios definidos por dicha sucursal</em></p>
 
 <%= render 'form' %>
         
 <%= link_to 'Volver', turns_path , class: 'btn,btn-secondary' %>
-
-
-
-
-
-<!-- FUNCIONES JAVASCRIPT -->
-
-<script type="text/javascript">
-    function boton_provincia(valor) {
-      if (valor == "Selecciona una provincia"){
-        document.getElementById("boton").style.visibility = "hidden"
-        }else{
-          document.getElementById("boton").style.visibility = "visible"
-          }
-      }
-</script>

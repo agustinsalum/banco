@@ -30,6 +30,16 @@ class TurnsController < ApplicationController
 
 
   def create
+    @turn = Turn.new(turn_params)
+    @turn.state = 'Pendiente'
+    @turn.user_client = current_user
+    if @turn.save()
+      flash[:success] = "el turno con fecha #{@turn.turn_date.strftime('%m/%d/%Y')} y hora #{@turn.hour.strftime("%H:%M")} ha sido creada de manera satisfactoria"
+    else
+      errores = @turn.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
+    end
+    redirect_to turns_path 
   end
 
 
@@ -48,5 +58,12 @@ class TurnsController < ApplicationController
     @un_turno.destroy
     flash[:message] = "El turno con motivo:  #{@un_turno.reason_turn} con fecha: #{@un_turno.turn_date} ha sido eliminado del sistema"
     redirect_to turns_path
+  end
+
+
+  private
+  
+  def turn_params
+    params.require(:turn).permit(:turn_date, :hour, :reason_turn, :subsidiary_id)
   end
 end
