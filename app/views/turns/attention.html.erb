@@ -1,0 +1,11 @@
+<p class="fs-2">Atender turno del cliente <%= @turn.user_client.name%></p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<p><em> Una vez concluida la consulta ingrese un breve comentario reflejando una conclusion final de la consulta. El sistema cambiara automaticamente el estado a Atendido</em></p>
+
+<%= render 'form_comment' %>
+        
+<%= link_to 'Volver', turns_path , class: 'btn,btn-secondary' %>

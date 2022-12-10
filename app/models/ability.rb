@@ -44,11 +44,14 @@ class Ability
 
       # Puede ver los turnos pertenecientes a su sucursal
       can :read, Turn do |t|
-        t.subsidiary_id == user.id
+        t.subsidiary == user.subsidiary
       end
       
-      # puede atender turnos
-      # can [ ], Turn
+      # puede atender turnos de mi sucursal
+      can [ :attention, :create_comment ], Turn do |t|
+        t.subsidiary_id == user.subsidiary_id
+      end
+
 
     else # Cliente
 

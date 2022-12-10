@@ -16,7 +16,13 @@ Rails.application.routes.draw do
   end
 
   # Rutas turnos
-  resources :turns
+  resources :turns do
+    # Para que pida parametrros
+    member do
+      get 'attention', action: 'attention', as: :attention
+      post 'create_comment', action: 'create_comment', as: :create_comment
+    end
+  end
   
 
   # Rutas sucursales que contiene chedules

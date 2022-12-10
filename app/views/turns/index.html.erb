@@ -42,7 +42,9 @@
       <th scope="col">Estado</th>
       <th scope="col">Sucursal</th>
       <th scope="col">Empleado</th>
-      <th scope="col">Atender</th>
+      <% if current_user.role == 'Empleado' %>
+        <th scope="col">Atender</th>
+      <% end %>
       <% if current_user.role == 'Cliente' %>
         <th scope="col">Modificar</th>
         <th scope="col">Eliminar</th>
@@ -72,7 +74,14 @@
             <td> <%= turn.user_bank.name %> </td>
           <% end %>
 
-          <th>Atender</th>
+          <% if (can? :attention, turn) && (turn.state == 'Pendiente') %>
+            <td><%= link_to attention_turn_path(turn.id) do %>
+                <%= image_tag "people-fill.svg", size: "20x20", class: "some class here" %>
+            <% end %></td>
+          <% elsif (current_user.role == 'Empleado')%>
+              <td><%= image_tag "exclamation-triangle-fill.svg", size: "20x20", class: "some class here" %>
+              </td>
+          <% end %>
           
           <% if (can? :update, turn) && (turn.state == 'Pendiente')  %>
             <td><%= link_to edit_turn_path(turn.id) do %>

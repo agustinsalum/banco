@@ -69,10 +69,34 @@ class TurnsController < ApplicationController
     redirect_to turns_path
   end
 
+  def attention
+    @turn = Turn.find(params[:id])
+  end
+
+
+  def create_comment
+    # https://api.rubyonrails.org/v7.0.4/classes/ActionController/Parameters.html
+    comment = turn_param_comment[:comment]
+    @turn.state = 'Atendido'
+    @turn.user_bank = current_user
+    @turn.comment = comment
+    if @turn.save()
+      flash[:success] = "Se agrego el comentario con exito. Ademas, se cambio el estado a atendido"
+    else
+      errores = @turn.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
+    end
+    redirect_to turns_path
+  end
+
 
   private
   
   def turn_params
     params.require(:turn).permit(:turn_date, :hour, :reason_turn, :subsidiary_id)
+  end
+
+  def turn_param_comment
+    params.require(:turn).permit(:comment)
   end
 end

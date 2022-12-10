@@ -1,0 +1,14 @@
+<%= form_with model: @turn, url: create_comment_turn_path(@turn), method: 'post' do |form| %>
+  <div class="card">
+    <div class="card-body">
+
+        <div class="mb-3">
+            <%= form.label :comment %><br>
+            <%= form.text_area :comment %>
+        </div>
+
+        <%= form.submit :Guardar , class: 'btn btn-success'%> |
+        <%= form.submit "Limpiar", :type => "reset", class: "btn btn-primary" %>
+    </div>
+</div>
+<% end %>
