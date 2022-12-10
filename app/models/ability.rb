@@ -22,6 +22,11 @@ class Ability
       # No puede acceder a los turnos
       cannot :manage, Turn
 
+      # Puedo ver mi perfil de usuario
+      can [ :perfil ], User do |u|
+        u.id == user.id
+      end
+
 
 
 
@@ -52,6 +57,11 @@ class Ability
         t.subsidiary_id == user.subsidiary_id
       end
 
+      # Puedo ver mi perfil de usuario
+      can [ :perfil ], User do |u|
+        u.id == user.id
+      end
+
 
     else # Cliente
 
@@ -67,6 +77,11 @@ class Ability
       # Puede editar y eliminar turnos propios
       can [ :update, :destroy ], Turn do |t|
         t.user_client_id == user.id
+      end
+
+      # Puedo ver mi perfil de usuario
+      can [ :perfil ], User do |u|
+        u.id == user.id
       end
 
     end
