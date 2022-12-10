@@ -12,11 +12,10 @@
   <% end %>
 <% end %>
 
-<%if current_user.role == 'Administrador'%>
-  <h2>Turnos pendientes y atendidos</h2>
-<%elsif current_user.role == 'Empleado'%>
+
+<%if current_user.role == 'Empleado'%>
   <h2>Turnos de la sucursal <%= @subsidiary.name_subsidiary%> </h2>
-<%else%>
+<%elsif current_user.role == 'Cliente'%>
   <h2>Mis turnos</h2>
 <%end%>
 
@@ -44,12 +43,12 @@
       <th scope="col">Sucursal</th>
       <th scope="col">Empleado</th>
       <th scope="col">Atender</th>
-      <% if can? :update, Turn %>
+
         <th scope="col">Modificar</th>
-      <%end%>
-      <% if can? :destroy, Turn %>
+
+
         <th scope="col">Eliminar</th>
-      <%end%>
+
     </tr>
   </thead>
   <tbody>
@@ -77,7 +76,7 @@
 
           <th>Atender</th>
           
-          <% if (can? :update, turn) && (turn.state == 'Pendiente')%>
+          <% if (can? :update, turn) && (turn.state == 'Pendiente') %>
             <td><%= link_to edit_turn_path(turn.id) do %>
                 <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
@@ -86,7 +85,7 @@
               </td>
           <% end %>
 
-          <% if can? :destroy, turn  %>
+          <% if (can? :destroy, turn) && (turn.state == 'Pendiente') %>
             <td><%= link_to turn_path(turn.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro de eliminar el turno con fecha?"  } do %>
               <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
             <% end %></td>

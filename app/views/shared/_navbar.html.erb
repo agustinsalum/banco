@@ -9,10 +9,13 @@
         <% end %>
 
         <% if current_user %>
-          <li class="nav-item">
-            <button type="button" class="btn btn-dark"> <%= link_to "Gestion de Turnos", turns_path %> </button>
-          </li>
-
+          
+          <% if can? :read, Turn %> 
+            <li class="nav-item">
+              <button type="button" class="btn btn-dark"> <%= link_to "Gestion de Turnos", turns_path %> </button>
+            </li>
+          <% end %>
+          
           <% if can? :read, User %>
             <li class="nav-item">
               <button type="button" class="btn btn-dark"> <%= link_to "Gestionar Usuarios", users_path %> </button>

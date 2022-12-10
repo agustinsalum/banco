@@ -2,21 +2,15 @@ class TurnsController < ApplicationController
 
   def index
     # https://guides.rubyonrails.org/active_record_querying.html
-
-    if (current_user.role == 'Administrador')
-      # Todos los turnos pendientes o atendidos, menos los cancelados (orden ascendente)
-
-      turns = Turn.where(state: 'Pendiente').or(Turn.where(state: 'Atendido'))
-      @turns = turns.paginate(page: params[:page]).order("turn_date ASC")
-    elsif (current_user.role == 'Empleado')
-      # Todos los turnos con estado pendiente, pertenecientes a la sucursal donde trabaja (orden ascendente)
+    # where con or Class.where(state: 'Pendiente').or(Turn.where(state: 'Atendido'))
+    if (current_user.role == 'Empleado')
+      # Todos los turnos con estado pendiente, pertenecientes a la sucursal donde trabaja (orden ascendente fecha)
 
       @subsidiary = current_user.subsidiary
-      turns = Turn.where(subsidiary: @subsidiary)
-      @turns = turns.paginate(page: params[:page]).order("turn_date ASC")
-    else
-      # Cliente
-      # Todos los turnos del cliente (orden ascendente)
+      filter = Turn.where(subsidiary: @subsidiary)
+      @turns = filter.paginate(page: params[:page]).order("turn_date ASC")
+    elsif (current_user.role == 'Cliente')
+      # Todos los turnos del cliente (orden ascendente fecha)
       
       turns = Turn.where(user_client_id: current_user)
       @turns = turns.paginate(page: params[:page]).order("turn_date ASC")
@@ -64,9 +58,13 @@ class TurnsController < ApplicationController
   end
 
   def destroy
-    @un_turno = Turn.find(params[:id])
-    @un_turno.destroy
-    flash[:message] = "El turno con motivo:  #{@un_turno.reason_turn} con fecha: #{@un_turno.turn_date} ha sido eliminado del sistema"
+    @turn = Turn.find(params[:id])
+    if (@turn.state != 'Atendido')
+      @turn.destroy
+      flash[:success] = "El turno con motivo:  #{@turn.reason_turn} con fecha: #{@turn.turn_date} ha sido eliminado del sistema"
+    else
+      flash[:danger] = "No puede eliminar turnos ya atendidos"
+    end
     redirect_to turns_path
   end
 

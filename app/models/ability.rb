@@ -14,18 +14,13 @@ class Ability
       can [ :read, :show, :create, :update ], User
 
 
-      # Puede eliminar a todos los usuarios, pero no a mi mismo
+      # Puede eliminar a todos los usuarios, pero no a si mismo
       can :destroy, User do |u|
         u.id != user.id
       end
 
-      # Puede editar y cancelar todos los turnos
-      can [ :update, :destroy ], Turn do |t|
-        t.user_client != nil
-      end
-
-      # No puede crear turnos
-      cannot :create, Turn
+      # No puede acceder a los turnos
+      cannot :manage, Turn
 
 
 
@@ -41,11 +36,16 @@ class Ability
       # Puede solamente visualizar los horarios de las sucursales
       can :read, Schedule
 
-      # Puede solamente visualizar la informacion de los usuario y sus perfiles
+      # Puede solamente visualizar la informacion de los usuarios y sus perfiles
       can [ :read, :show ], User
       
       # No puede crear, actualizar ni eliminar
       cannot [ :create, :update, :destroy], Turn
+
+      # Puede ver los turnos pertenecientes a su sucursal
+      can :read, Turn do |t|
+        t.subsidiary_id == user.id
+      end
       
       # puede atender turnos
       # can [ ], Turn
@@ -59,16 +59,13 @@ class Ability
       cannot :manage, User
 
       # Puede crear turnos
-      can :create, Turn
+      can [ :read, :create], Turn
 
-      # Puede editar y cancelar turnos propios
+      # Puede editar y eliminar turnos propios
       can [ :update, :destroy ], Turn do |t|
         t.user_client_id == user.id
       end
 
     end
-
-
-
   end
 end
