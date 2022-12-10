@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource except: :perfil
+  load_and_authorize_resource except: [ :perfil, :cambiar_pass, :actualizar_pass ]
   
   def index
     @users = User.all.paginate(page: params[:page])
@@ -57,10 +57,36 @@ class UsersController < ApplicationController
   def perfil
   end
 
+  def cambiar_pass
+    @user = User.find(params[:id])
+  end
+
+  def actualizar_pass
+    puts "Entre"
+    password = user_param_password[:password]
+    p password
+    password_confirmation = user_param_password[:password_confirmation]
+    p password_confirmation
+    @user.password = password
+    @user.password_confirmation = password_confirmation
+    #
+    if @user.save()
+      flash[:success] = "Se actualizo la contraseña con exito"
+    else
+      errores = @user.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
+    end
+    redirect_to users_path
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:email, :name, :role, :password, :password_confirmation, :subsidiary_id)
+  end
+
+  def user_param_password
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
 

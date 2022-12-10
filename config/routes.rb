@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   resources :users do
     # Para que no pida parametros
     collection do
-      get 'perfil', action: 'perfil', as: :perfil
+      get   'perfil'                 , action: 'perfil'                 , as: :perfil
+    end
+    # Para que pida parametrros
+    member do
+      get   'cambiar_pass'     , action: 'cambiar_pass'     , as: :cambiar_pass
+      post  'actualizar_pass'  , action: 'actualizar_pass'  , as: :actualizar_pass
     end
   end
 
