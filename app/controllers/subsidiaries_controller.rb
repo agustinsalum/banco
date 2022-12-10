@@ -1,4 +1,5 @@
 class SubsidiariesController < ApplicationController
+  load_and_authorize_resource
 
   def index
     @subsidiaries = Subsidiary.all.paginate(page: params[:page])

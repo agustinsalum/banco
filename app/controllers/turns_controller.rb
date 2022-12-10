@@ -1,4 +1,5 @@
 class TurnsController < ApplicationController
+  load_and_authorize_resource
 
   def index
     # https://guides.rubyonrails.org/active_record_querying.html
