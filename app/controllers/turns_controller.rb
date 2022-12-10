@@ -48,9 +48,19 @@ class TurnsController < ApplicationController
   end
 
   def edit
+    @turn = Turn.find(params[:id])
+    @subsidiaries = Subsidiary.all
   end
 
   def update
+    @turn = Turn.find(params[:id])
+    if @turn.update(turn_params)
+      flash[:success] = "El turno se edito satisfactoriamente"
+    else
+      errores = @turn.errors.full_messages
+      flash[:danger] = "Error: #{errores}"
+    end
+    redirect_to turns_path
   end
 
   def destroy

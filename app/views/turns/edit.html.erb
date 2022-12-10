@@ -1,1 +1,11 @@
-<p>Hola mundo</p>
+<p class="fs-2">Formulario para editar el turno con fecha <%= @turn.turn_date.strftime('%m/%d/%Y')%> </p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+   <hr class="bg-danger border-2 border-top border-danger">
+</p>
+
+<p><em> Edite el turno</em></p>
+
+<%= render 'form' %>
+        
+<%= link_to 'Volver', turns_path , class: 'btn,btn-secondary' %>

@@ -2,7 +2,6 @@
 puts "Empezamos a cargar los datos"
 
 # Fechas
-fecha_2022_diciembre_18 = DateTime.civil_from_format :local, 2022, 12, 18
 fecha_2022_diciembre_19 = DateTime.civil_from_format :local, 2022, 12, 19
 fecha_2022_diciembre_20 = DateTime.civil_from_format :local, 2022, 12, 20
 fecha_2022_diciembre_21 = DateTime.civil_from_format :local, 2022, 12, 21
@@ -11,7 +10,8 @@ fecha_2022_diciembre_23 = DateTime.civil_from_format :local, 2022, 12, 23
 fecha_2022_diciembre_26 = DateTime.civil_from_format :local, 2022, 12, 26
 fecha_2022_diciembre_27 = DateTime.civil_from_format :local, 2022, 12, 27
 fecha_2022_diciembre_28 = DateTime.civil_from_format :local, 2022, 12, 28
-fecha_2022_octubre_2    = DateTime.civil_from_format :local, 2022, 10, 2
+fecha_2022_diciembre_29 = DateTime.civil_from_format :local, 2022, 12, 29
+fecha_2022_diciembre_30 = DateTime.civil_from_format :local, 2022, 12, 30
 #
 tiempo_ocho_mañana        = Time.new(2022, 12, 1,  8,  0,  0)
 tiempo_nueve_mañana       = Time.new(2022, 12, 1,  9,  0,  0)
@@ -45,10 +45,10 @@ localidad_mar_del_plata    = Locality.new(name_locality: 'Mar del plata' , provi
 localidad_perito_moreno    = Locality.new(name_locality: 'Perito moreno' , province: provincia_santa_cruz)
 localidad_calamuchita      = Locality.new(name_locality: 'Calamuchita'   , province: provincia_cordoba)
 
-localidad_necochea.save()
-localidad_la_plata.save()
-localidad_mar_del_plata.save()
-localidad_perito_moreno.save()
+p localidad_necochea.save()
+p localidad_la_plata.save()
+p localidad_mar_del_plata.save()
+p localidad_perito_moreno.save()
 
 puts "Se cargaron las localidades con exito"
 # Creamos sucursales
@@ -59,49 +59,70 @@ sucursal_116  = Subsidiary.new(name_subsidiary: 'Banco perito moreno' , address:
 sucursal_111  = Subsidiary.new(name_subsidiary: 'Calamuchita bank'    , address: 'Esquina 111' , phone: '2262000003', locality: localidad_calamuchita)
 sucursal_200  = Subsidiary.new(name_subsidiary: 'Mardel tribunales'   , address: 'Almte Brown' , phone: '2262000004', locality: localidad_mar_del_plata)
 
-sucursal_83.save()
-sucursal_79.save()
-sucursal_116.save()
-sucursal_111.save()
-sucursal_200.save()
+p sucursal_83.save()
+p sucursal_79.save()
+p sucursal_116.save()
+p sucursal_111.save()
+p sucursal_200.save()
 
 puts "Se cargaron las sucursales con exito"
 # Creamos horarios para sucursales
 
-horario_lunes_sucursal_83     = Schedule.new(day_week: "Lunes"     , hour_since: tiempo_ocho_mañana   , hour_until: tiempo_doce_mañana     ,  subsidiary: sucursal_83)
-horario_martes_sucursal_83    = Schedule.new(day_week: "Martes"    , hour_since: tiempo_nueve_mañana  , hour_until: tiempo_trece_tarde     ,  subsidiary: sucursal_83)
-horario_miercoles_sucursal_83 = Schedule.new(day_week: "Miercoles" , hour_since: tiempo_diez_mañana   , hour_until: tiempo_catorce_tarde   ,  subsidiary: sucursal_83)
-horario_jueves_sucursal_83    = Schedule.new(day_week: "Jueves"    , hour_since: tiempo_once_mañana   , hour_until: tiempo_quince_tarde    ,  subsidiary: sucursal_83)
-horario_viernes_sucursal_83   = Schedule.new(day_week: "Viernes"   , hour_since: tiempo_doce_mañana   , hour_until: tiempo_dieciseis_tarde ,  subsidiary: sucursal_83)
+horario_lunes_sucursal_83       = Schedule.new(day_week: "Monday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_83)
+horario_martes_sucursal_83      = Schedule.new(day_week: "Tuesday"      , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_83)
+horario_miercoles_sucursal_83   = Schedule.new(day_week: "Wednesday"    , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_83)
+horario_jueves_sucursal_83      = Schedule.new(day_week: "Thursday"     , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_83)
+horario_viernes_sucursal_83     = Schedule.new(day_week: "Friday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_83)
 
-horario_lunes_sucursal_79     = Schedule.new(day_week: "Lunes"     , hour_since: tiempo_ocho_mañana   , hour_until: tiempo_doce_mañana     ,  subsidiary: sucursal_79)
-horario_martes_sucursal_79    = Schedule.new(day_week: "Martes"    , hour_since: tiempo_nueve_mañana  , hour_until: tiempo_trece_tarde     ,  subsidiary: sucursal_79)
-horario_viernes_sucursal_79   = Schedule.new(day_week: "Viernes"   , hour_since: tiempo_diez_mañana   , hour_until: tiempo_catorce_tarde   ,  subsidiary: sucursal_79)
+horario_lunes_sucursal_79       = Schedule.new(day_week: "Monday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_79)
+horario_martes_sucursal_79      = Schedule.new(day_week: "Tuesday"      , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_79)
+horario_miercoles_sucursal_79   = Schedule.new(day_week: "Wednesday"    , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_79)
+horario_jueves_sucursal_79      = Schedule.new(day_week: "Thursday"     , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_79)
+horario_viernes_sucursal_79     = Schedule.new(day_week: "Friday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_79)
 
-horario_lunes_sucursal_200    = Schedule.new(day_week: "Lunes"     , hour_since: tiempo_ocho_mañana   , hour_until: tiempo_doce_mañana     ,  subsidiary: sucursal_200)
-horario_martes_sucursal_200   = Schedule.new(day_week: "Martes"    , hour_since: tiempo_nueve_mañana  , hour_until: tiempo_trece_tarde     ,  subsidiary: sucursal_200)
+horario_lunes_sucursal_116      = Schedule.new(day_week: "Monday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_116)
+horario_martes_sucursal_116     = Schedule.new(day_week: "Tuesday"      , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_116)
+horario_miercoles_sucursal_116  = Schedule.new(day_week: "Wednesday"    , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_116)
+horario_jueves_sucursal_116     = Schedule.new(day_week: "Thursday"     , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_116)
+horario_viernes_sucursal_116    = Schedule.new(day_week: "Friday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_116)
 
-horario_lunes_sucursal_116    = Schedule.new(day_week: "Lunes"     , hour_since: tiempo_ocho_mañana   , hour_until: tiempo_doce_mañana     ,  subsidiary: sucursal_116)
-horario_viernes_sucursal_116  = Schedule.new(day_week: "Viernes"   , hour_since: tiempo_nueve_mañana  , hour_until: tiempo_trece_tarde     ,  subsidiary: sucursal_116)
+horario_lunes_sucursal_111       = Schedule.new(day_week: "Monday"       , hour_since: tiempo_ocho_mañana   , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_111)
+horario_martes_sucursal_111      = Schedule.new(day_week: "Tuesday"      , hour_since: tiempo_ocho_mañana   , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_111)
+horario_miercoles_sucursal_111   = Schedule.new(day_week: "Wednesday"    , hour_since: tiempo_ocho_mañana   , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_111)
 
-horario_lunes_sucursal_111    = Schedule.new(day_week: "Lunes"     , hour_since: tiempo_diez_mañana   , hour_until: tiempo_once_mañana     ,  subsidiary: sucursal_111)
+horario_lunes_sucursal_200      = Schedule.new(day_week: "Monday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_200)
+horario_martes_sucursal_200     = Schedule.new(day_week: "Tuesday"      , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_200)
+horario_miercoles_sucursal_200  = Schedule.new(day_week: "Wednesday"    , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_200)
+horario_jueves_sucursal_200     = Schedule.new(day_week: "Thursday"     , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_200)
+horario_viernes_sucursal_200    = Schedule.new(day_week: "Friday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_200)
 
-horario_lunes_sucursal_83.save()
-horario_martes_sucursal_83.save()
-horario_miercoles_sucursal_83.save()
-horario_jueves_sucursal_83.save()
-horario_viernes_sucursal_83.save()
+p horario_lunes_sucursal_83.save()
+p horario_martes_sucursal_83.save()
+p horario_miercoles_sucursal_83.save()
+p horario_jueves_sucursal_83.save()
+p horario_viernes_sucursal_83.save()
 
-horario_lunes_sucursal_79.save()
-horario_martes_sucursal_79.save()
-horario_viernes_sucursal_79.save()
+p horario_lunes_sucursal_79.save()
+p horario_martes_sucursal_79.save()
+p horario_miercoles_sucursal_79.save()
+p horario_jueves_sucursal_79.save()
+p horario_viernes_sucursal_79.save()
 
-horario_lunes_sucursal_200.save()
-horario_martes_sucursal_200.save()
+p horario_lunes_sucursal_116.save()
+p horario_martes_sucursal_116.save()
+p horario_miercoles_sucursal_116.save()
+p horario_jueves_sucursal_116.save()
+p horario_viernes_sucursal_116.save()
 
-horario_lunes_sucursal_116.save()
-horario_viernes_sucursal_116.save()
-horario_lunes_sucursal_111.save()
+p horario_lunes_sucursal_111.save()
+p horario_martes_sucursal_111.save()
+p horario_miercoles_sucursal_111.save()
+
+p horario_lunes_sucursal_200.save()
+p horario_martes_sucursal_200.save()
+p horario_miercoles_sucursal_200.save()
+p horario_jueves_sucursal_200.save()
+p horario_viernes_sucursal_200.save()
 
 puts "Se cargaron los horarios con exito"
 # Creamos usuarios
@@ -113,45 +134,45 @@ usuario_cliente          = User.new( email: 'cliente@gmail.com'   , password: '1
 usuario_cliente_2        = User.new( email: 'cliente2@gmail.com'  , password: '123456789' , password_confirmation: '123456789' , name: 'cliente2')
 usuario_cliente_3        = User.new( email: 'cliente3@gmail.com'  , password: '123456789' , password_confirmation: '123456789' , name: 'cliente3')
 
-usuario_admin.save()
-usuario_bancario.save()
-usuario_bancario_2.save()
-usuario_cliente.save()
-usuario_cliente_2.save()
-usuario_cliente_3.save()
+p usuario_admin.save()
+p usuario_bancario.save()
+p usuario_bancario_2.save()
+p usuario_cliente.save()
+p usuario_cliente_2.save()
+p usuario_cliente_3.save()
 
 puts "Se cargaron los usuarios con exito"
 # Creamos turnos
 
-turno_0   = Turn.new(turn_date: fecha_2022_diciembre_18  , hour: tiempo_nueve_mañana      , reason_turn: "Renovacion de la tarjeta"                                                       , subsidiary: sucursal_83   , state: 'Pendiente'  , user_client: usuario_cliente)
-turno_1   = Turn.new(turn_date: fecha_2022_diciembre_19  , hour: tiempo_diez_mañana       , reason_turn: "Dar de baja la tarjeta"                                                         , subsidiary: sucursal_79   , state: 'Pendiente'  , user_client: usuario_cliente)
-turno_2   = Turn.new(turn_date: fecha_2022_diciembre_20  , hour: tiempo_once_mañana       , reason_turn: "Pedido de factura"           , comment: "Factura entregada"                     , subsidiary: sucursal_111  , state: 'Atendido'   , user_client: usuario_cliente      , user_bank: usuario_bancario)
-turno_3   = Turn.new(turn_date: fecha_2022_diciembre_21  , hour: tiempo_doce_mañana       , reason_turn: "Baja de tarjeta de debito"                                                      , subsidiary: sucursal_116  , state: 'Pendiente'  , user_client: usuario_cliente)
-turno_4   = Turn.new(turn_date: fecha_2022_diciembre_22  , hour: tiempo_trece_tarde       , reason_turn: "Tarjeta retenida por cajero"                                                    , subsidiary: sucursal_83   , state: 'Pendiente'  , user_client: usuario_cliente)
-turno_5   = Turn.new(turn_date: fecha_2022_diciembre_23  , hour: tiempo_trece_tarde       , reason_turn: "Los cajeros no funcionan"                                                       , subsidiary: sucursal_79   , state: 'Pendiente'  , user_client: usuario_cliente)
-turno_6   = Turn.new(turn_date: fecha_2022_diciembre_26  , hour: tiempo_once_mañana       , reason_turn: "Vencimiento de la tarjeta"   , comment: "Se realizo la renovacion de la fecha"  , subsidiary: sucursal_111  , state: 'Atendido'   , user_client: usuario_cliente_2    , user_bank: usuario_bancario)
-turno_7   = Turn.new(turn_date: fecha_2022_diciembre_27  , hour: tiempo_catorce_tarde     , reason_turn: "Cambio de tarjeta gastada"                                                      , subsidiary: sucursal_116  , state: 'Pendiente'  , user_client: usuario_cliente_2)
-turno_8   = Turn.new(turn_date: fecha_2022_octubre_2     , hour: tiempo_doce_mañana       , reason_turn: "Horarios de atencion cortos" , comment: "Se registro la critica constructiva"   , subsidiary: sucursal_83   , state: 'Atendido'   , user_client: usuario_cliente_2    , user_bank: usuario_bancario_2)
-turno_9   = Turn.new(turn_date: fecha_2022_diciembre_28  , hour: tiempo_trece_tarde       , reason_turn: "Modificacion de datos"                                                          , subsidiary: sucursal_79   , state: 'Pendiente'  , user_client: usuario_cliente_3)
-turno_10  = Turn.new(turn_date: fecha_2022_diciembre_18  , hour: tiempo_quince_tarde      , reason_turn: "Problema con home banking"                                                      , subsidiary: sucursal_79   , state: 'Pendiente'  , user_client: usuario_cliente_3)
-turno_11  = Turn.new(turn_date: fecha_2022_diciembre_19  , hour: tiempo_dieciseis_tarde   , reason_turn: "Cambio de contraseñas"       , comment: "Se realizo el cambio de la contraseña" , subsidiary: sucursal_111  , state: 'Atendido'   , user_client: usuario_cliente_3    , user_bank: usuario_bancario_2)
-turno_12  = Turn.new(turn_date: fecha_2022_diciembre_20  , hour: tiempo_diecisiete_tarde  , reason_turn: "Cajeros sin dolares"                                                            , subsidiary: sucursal_116  , state: 'Pendiente'  , user_client: usuario_cliente_3)
-turno_13  = Turn.new(turn_date: fecha_2022_diciembre_21  , hour: tiempo_dieciocho_tarde   , reason_turn: "Baja del sistema"                                                               , subsidiary: sucursal_83   , state: 'Pendiente'  , user_client: usuario_cliente_3)
+turno_0   = Turn.new(turn_date: fecha_2022_diciembre_19  , hour: tiempo_nueve_mañana      , reason_turn: "Renovacion de la tarjeta"                                                       , subsidiary: sucursal_83   , state: 'Pendiente'  , user_client: usuario_cliente)
+turno_1   = Turn.new(turn_date: fecha_2022_diciembre_20  , hour: tiempo_diez_mañana       , reason_turn: "Dar de baja la tarjeta"                                                         , subsidiary: sucursal_79   , state: 'Pendiente'  , user_client: usuario_cliente)
+turno_2   = Turn.new(turn_date: fecha_2022_diciembre_21  , hour: tiempo_once_mañana       , reason_turn: "Pedido de factura"           , comment: "Factura entregada"                     , subsidiary: sucursal_111  , state: 'Atendido'   , user_client: usuario_cliente      , user_bank: usuario_bancario)
+turno_3   = Turn.new(turn_date: fecha_2022_diciembre_22  , hour: tiempo_doce_mañana       , reason_turn: "Baja de tarjeta de debito"                                                      , subsidiary: sucursal_116  , state: 'Pendiente'  , user_client: usuario_cliente)
+turno_4   = Turn.new(turn_date: fecha_2022_diciembre_23  , hour: tiempo_trece_tarde       , reason_turn: "Tarjeta retenida por cajero"                                                    , subsidiary: sucursal_83   , state: 'Pendiente'  , user_client: usuario_cliente)
+turno_5   = Turn.new(turn_date: fecha_2022_diciembre_26  , hour: tiempo_trece_tarde       , reason_turn: "Los cajeros no funcionan"                                                       , subsidiary: sucursal_79   , state: 'Pendiente'  , user_client: usuario_cliente)
+turno_6   = Turn.new(turn_date: fecha_2022_diciembre_27  , hour: tiempo_once_mañana       , reason_turn: "Vencimiento de la tarjeta"   , comment: "Se realizo la renovacion de la fecha"  , subsidiary: sucursal_111  , state: 'Atendido'   , user_client: usuario_cliente_2    , user_bank: usuario_bancario)
+turno_7   = Turn.new(turn_date: fecha_2022_diciembre_28  , hour: tiempo_catorce_tarde     , reason_turn: "Cambio de tarjeta gastada"                                                      , subsidiary: sucursal_116  , state: 'Pendiente'  , user_client: usuario_cliente_2)
+turno_8   = Turn.new(turn_date: fecha_2022_diciembre_29  , hour: tiempo_doce_mañana       , reason_turn: "Horarios de atencion cortos" , comment: "Se registro la critica constructiva"   , subsidiary: sucursal_83   , state: 'Atendido'   , user_client: usuario_cliente_2    , user_bank: usuario_bancario_2)
+turno_9   = Turn.new(turn_date: fecha_2022_diciembre_30  , hour: tiempo_trece_tarde       , reason_turn: "Modificacion de datos"                                                          , subsidiary: sucursal_79   , state: 'Pendiente'  , user_client: usuario_cliente_3)
+turno_10  = Turn.new(turn_date: fecha_2022_diciembre_19  , hour: tiempo_quince_tarde      , reason_turn: "Problema con home banking"                                                      , subsidiary: sucursal_79   , state: 'Pendiente'  , user_client: usuario_cliente_3)
+turno_11  = Turn.new(turn_date: fecha_2022_diciembre_20  , hour: tiempo_nueve_mañana      , reason_turn: "Cambio de contraseñas"       , comment: "Se realizo el cambio de la contraseña" , subsidiary: sucursal_111  , state: 'Atendido'   , user_client: usuario_cliente_3    , user_bank: usuario_bancario_2)
+turno_12  = Turn.new(turn_date: fecha_2022_diciembre_21  , hour: tiempo_trece_tarde       , reason_turn: "Cajeros sin dolares"                                                            , subsidiary: sucursal_116  , state: 'Pendiente'  , user_client: usuario_cliente_3)
+turno_13  = Turn.new(turn_date: fecha_2022_diciembre_22  , hour: tiempo_catorce_tarde     , reason_turn: "Baja del sistema"                                                               , subsidiary: sucursal_83   , state: 'Pendiente'  , user_client: usuario_cliente_3)
 
-turno_0.save()
-turno_1.save()
-turno_2.save()
-turno_3.save()
-turno_4.save()
-turno_5.save()
-turno_6.save()
-turno_7.save()
-turno_8.save()
-turno_9.save()
-turno_10.save()
-turno_11.save()
-turno_12.save()
-turno_13.save()
+p turno_0.save()
+p turno_1.save()
+p turno_2.save()
+p turno_3.save()
+p turno_4.save()
+p turno_5.save()
+p turno_6.save()
+p turno_7.save()
+p turno_8.save()
+p turno_9.save()
+p turno_10.save()
+p turno_11.save()
+p turno_12.save()
+p turno_13.save()
 
 puts "Se cargaron los turnos con exito"
 

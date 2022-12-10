@@ -2,7 +2,7 @@ class Turn < ApplicationRecord
   self.per_page = 4 # Cantidad de turnos por pagina
   validates :reason_turn, :turn_date, :hour, :state, presence: true
   validates :comment, presence: false
-  validates :turn_date, uniqueness: { scope: :user_client_id }
+  validates :turn_date, uniqueness: { scope: [ :hour, :user_client_id ] }
   validate  :allowed_hour
   validate  :later_date
   belongs_to :subsidiary
@@ -10,20 +10,22 @@ class Turn < ApplicationRecord
   belongs_to :user_bank, class_name: :User, optional: true
   
   def allowed_hour
-    schedule_week = nil
-    week = turn_date.strftime("%A")
-    schedules_subsidiary = subsidiary.schedules
-    schedules_subsidiary.find_each do |schedule|
-      if (schedule.day_week == week)
-        schedule_week = schedule 
+    horario_semana = nil
+    encontre = false
+    dia_semana = turn_date.strftime("%A")
+    horarios_sucursal = subsidiary.schedules
+    horarios_sucursal.find_each do |horario|
+      if (horario.day_week == dia_semana) || (encontre)
+        horario_semana = horario
+        encontre = true
       end
     end
-    if (schedule_week != nil)
-      if !(schedule_week.hour_since >= hour and schedule_week.hour_until <= hour )
+    if (encontre)
+      if !(horario_semana.hour_since.strftime('%H%M').to_i >= hour.strftime('%H%M').to_i) and (horario_semana.hour_until.strftime('%H%M').to_i <= hour.strftime('%H%M').to_i )
         errors.add(:hour, "La sucursal #{subsidiary} no atiende entre esas horas")
       end
     else
-        errors.add(:hour, "La sucursal #{subsidiary.name_subsidiary} no atiende los #{week}")
+        errors.add(:hour, "La sucursal #{subsidiary.name_subsidiary} no atiende los #{dia_semana}")
     end
   end
 
