@@ -19,13 +19,18 @@ class Ability
         u.id != user.id
       end
 
+      # Puede cambiar unicamente su contraseña
+      can :cambiar_pass, User do |u|
+        u.id == user.id
+      end
+
+      # Puede cambiar unicamente su contraseña
+      can :actualizar_pass, User do |u|
+        u.id == user.id
+      end
+
       # No puede acceder a los turnos
       cannot :manage, Turn
-
-
-
-
-
 
     elsif user.role == 'Empleado'
 
@@ -54,7 +59,15 @@ class Ability
         t.subsidiary_id == user.subsidiary_id
       end
 
-
+      # Puede cambiar unicamente su contraseña
+      can :cambiar_pass, User do |u|
+        u.id == user.id
+      end
+      
+      # Puede cambiar unicamente su contraseña
+      can :actualizar_pass, User do |u|
+        u.id == user.id
+      end
 
 
     else # Cliente
@@ -71,6 +84,16 @@ class Ability
       # Puede editar y eliminar turnos propios
       can [ :update, :destroy ], Turn do |t|
         t.user_client_id == user.id
+      end
+
+      # Puede cambiar unicamente su contraseña
+      can :cambiar_pass, User do |u|
+        u.id == user.id
+      end
+      
+      # Puede cambiar unicamente su contraseña
+      can :actualizar_pass, User do |u|
+        u.id == user.id
       end
 
 
