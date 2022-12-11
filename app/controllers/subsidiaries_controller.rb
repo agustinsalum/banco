@@ -2,7 +2,7 @@ class SubsidiariesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @subsidiaries = Subsidiary.all.paginate(page: params[:page])
+    @subsidiaries = Subsidiary.all.paginate(page: params[:page]).order("name_subsidiary ASC")
   end
 
   def show

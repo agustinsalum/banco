@@ -27,6 +27,7 @@ class SchedulesController < ApplicationController
 
   def edit
     @schedule = Schedule.find(params[:id])
+    @days = Schedule.days_week
   end
 
   def update

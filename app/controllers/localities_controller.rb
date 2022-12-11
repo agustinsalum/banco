@@ -3,7 +3,7 @@ class LocalitiesController < ApplicationController
   #authorize_resource :locality
 
   def index
-    @localities = Locality.all.paginate(page: params[:page])
+    @localities = Locality.all.paginate(page: params[:page]).order("name_locality ASC")
   end
 
   def show

@@ -5,7 +5,7 @@ class Schedule < ApplicationRecord
   validate :hour_black_and_until_since_menor
   belongs_to :subsidiary
   
-  @@days = [ 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes' ]
+  @@days = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ]
 
   def self.days_week
     @@days
