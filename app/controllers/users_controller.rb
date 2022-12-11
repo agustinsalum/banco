@@ -46,9 +46,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @un_usuario = User.find(params[:id])
-    @un_usuario.destroy
-    flash[:message] = "El usuario con email: #{@un_usuario.email} ha sido eliminado del sistema"
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "El usuario con email: #{@user.email} ha sido eliminado del sistema"
     redirect_to users_path
   end
 
