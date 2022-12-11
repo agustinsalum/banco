@@ -60,7 +60,7 @@
             <td><%= link_to user_path(user.id) do %>
               <%= image_tag "person-fill.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
-          <% else %>
+          <% elsif (current_user.role == 'Administrador')%>
             <td> <%= image_tag "exclamation-triangle-fill.svg", size: "20x20", class: "some class here" %>
             </td>
           <% end %>
@@ -69,7 +69,7 @@
             <td><%= link_to edit_user_path(user.id) do %>
               <%= image_tag "ui-edit.svg", size: "20x20", class: "some class here" %>
             <% end %></td></td>
-          <% else %>
+          <% elsif (current_user.role == 'Administrador')%>
             <td> <%= image_tag "exclamation-triangle-fill.svg", size: "20x20", class: "some class here" %>
             </td>
           <% end %>
@@ -78,7 +78,7 @@
             <td><%= link_to user_path(user.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Estas seguro que desea eliminar al usuario?"  } do %>
               <%= image_tag "ui-delete.svg", size: "20x20", class: "some class here" %>
             <% end %></td>
-          <% else %>
+          <% elsif (current_user.role == 'Administrador')%>
             <td> <%= image_tag "exclamation-triangle-fill.svg", size: "20x20", class: "some class here" %>
             </td>
           <% end %>
