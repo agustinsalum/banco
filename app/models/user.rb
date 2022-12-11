@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  attr_accessor :password
   self.per_page = 4 # Cantidad de turnos por pagina
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
