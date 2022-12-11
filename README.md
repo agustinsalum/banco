@@ -80,7 +80,9 @@ rails s
 cat db/seeds.rb
 ```
 
-Se debe tener en cuenta que dependiendo el rol del usuario que inicio sesion puede tener acceso a algunas funcionalidades y a otras no.
+Se debe tener en cuenta que dependiendo el rol del usuario que inicio sesion, puede tener acceso a algunas funcionalidades y a otras no. A continuacion se mostrara un grafico de los permisos y autorizaciones
+
+![Screenshot](autorizaciones.png)
 
 ## Sugerencias
 
