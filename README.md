@@ -68,13 +68,19 @@ cd banco
 bundle install
 ```
 
-4. Iniciar el servidor local
+4. Crear db, realizar migraciones y crear datos
+
+```
+rails db:create && rails db:migrate && rails db:seed
+```
+
+5. Iniciar el servidor local
 
 ```
 rails s
 ```
 
-5. Las credenciales para iniciar sesion se pueden encontrar en el arhivo seeds
+6. Las credenciales para iniciar sesion se pueden encontrar en el arhivo seeds
 
 ```
 cat db/seeds.rb

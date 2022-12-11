@@ -45,10 +45,10 @@ localidad_mar_del_plata    = Locality.new(name_locality: 'Mar del plata' , provi
 localidad_perito_moreno    = Locality.new(name_locality: 'Perito moreno' , province: provincia_santa_cruz)
 localidad_calamuchita      = Locality.new(name_locality: 'Calamuchita'   , province: provincia_cordoba)
 
-p localidad_necochea.save()
-p localidad_la_plata.save()
-p localidad_mar_del_plata.save()
-p localidad_perito_moreno.save()
+localidad_necochea.save()
+localidad_la_plata.save()
+localidad_mar_del_plata.save()
+localidad_perito_moreno.save()
 
 puts "Se cargaron las localidades con exito"
 # Creamos sucursales
@@ -59,11 +59,11 @@ sucursal_116  = Subsidiary.new(name_subsidiary: 'Banco perito moreno' , address:
 sucursal_111  = Subsidiary.new(name_subsidiary: 'Calamuchita bank'    , address: 'Esquina 111' , phone: '2262000003', locality: localidad_calamuchita)
 sucursal_200  = Subsidiary.new(name_subsidiary: 'Mardel tribunales'   , address: 'Almte Brown' , phone: '2262000004', locality: localidad_mar_del_plata)
 
-p sucursal_83.save()
-p sucursal_79.save()
-p sucursal_116.save()
-p sucursal_111.save()
-p sucursal_200.save()
+sucursal_83.save()
+sucursal_79.save()
+sucursal_116.save()
+sucursal_111.save()
+sucursal_200.save()
 
 puts "Se cargaron las sucursales con exito"
 # Creamos horarios para sucursales
@@ -96,33 +96,33 @@ horario_miercoles_sucursal_200  = Schedule.new(day_week: "Wednesday"    , hour_s
 horario_jueves_sucursal_200     = Schedule.new(day_week: "Thursday"     , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_200)
 horario_viernes_sucursal_200    = Schedule.new(day_week: "Friday"       , hour_since: tiempo_ocho_mañana    , hour_until: tiempo_dieciseis_tarde      ,  subsidiary: sucursal_200)
 
-p horario_lunes_sucursal_83.save()
-p horario_martes_sucursal_83.save()
-p horario_miercoles_sucursal_83.save()
-p horario_jueves_sucursal_83.save()
-p horario_viernes_sucursal_83.save()
+horario_lunes_sucursal_83.save()
+horario_martes_sucursal_83.save()
+horario_miercoles_sucursal_83.save()
+horario_jueves_sucursal_83.save()
+horario_viernes_sucursal_83.save()
 
-p horario_lunes_sucursal_79.save()
-p horario_martes_sucursal_79.save()
-p horario_miercoles_sucursal_79.save()
-p horario_jueves_sucursal_79.save()
-p horario_viernes_sucursal_79.save()
+horario_lunes_sucursal_79.save()
+horario_martes_sucursal_79.save()
+horario_miercoles_sucursal_79.save()
+horario_jueves_sucursal_79.save()
+horario_viernes_sucursal_79.save()
 
-p horario_lunes_sucursal_116.save()
-p horario_martes_sucursal_116.save()
-p horario_miercoles_sucursal_116.save()
-p horario_jueves_sucursal_116.save()
-p horario_viernes_sucursal_116.save()
+horario_lunes_sucursal_116.save()
+horario_martes_sucursal_116.save()
+horario_miercoles_sucursal_116.save()
+horario_jueves_sucursal_116.save()
+horario_viernes_sucursal_116.save()
 
-p horario_lunes_sucursal_111.save()
-p horario_martes_sucursal_111.save()
-p horario_miercoles_sucursal_111.save()
+horario_lunes_sucursal_111.save()
+horario_martes_sucursal_111.save()
+horario_miercoles_sucursal_111.save()
 
-p horario_lunes_sucursal_200.save()
-p horario_martes_sucursal_200.save()
-p horario_miercoles_sucursal_200.save()
-p horario_jueves_sucursal_200.save()
-p horario_viernes_sucursal_200.save()
+horario_lunes_sucursal_200.save()
+horario_martes_sucursal_200.save()
+horario_miercoles_sucursal_200.save()
+horario_jueves_sucursal_200.save()
+horario_viernes_sucursal_200.save()
 
 puts "Se cargaron los horarios con exito"
 # Creamos usuarios
@@ -134,12 +134,12 @@ usuario_cliente          = User.new( email: 'cliente@gmail.com'   , password: '1
 usuario_cliente_2        = User.new( email: 'cliente2@gmail.com'  , password: '123456789' , password_confirmation: '123456789' , name: 'cliente2')
 usuario_cliente_3        = User.new( email: 'cliente3@gmail.com'  , password: '123456789' , password_confirmation: '123456789' , name: 'cliente3')
 
-p usuario_admin.save()
-p usuario_bancario.save()
-p usuario_bancario_2.save()
-p usuario_cliente.save()
-p usuario_cliente_2.save()
-p usuario_cliente_3.save()
+usuario_admin.save()
+usuario_bancario.save()
+usuario_bancario_2.save()
+usuario_cliente.save()
+usuario_cliente_2.save()
+usuario_cliente_3.save()
 
 puts "Se cargaron los usuarios con exito"
 # Creamos turnos
@@ -159,20 +159,20 @@ turno_11  = Turn.new(turn_date: fecha_2022_diciembre_20  , hour: tiempo_nueve_ma
 turno_12  = Turn.new(turn_date: fecha_2022_diciembre_21  , hour: tiempo_trece_tarde       , reason_turn: "Cajeros sin dolares"                                                            , subsidiary: sucursal_116  , state: 'Pendiente'  , user_client: usuario_cliente_3)
 turno_13  = Turn.new(turn_date: fecha_2022_diciembre_22  , hour: tiempo_catorce_tarde     , reason_turn: "Baja del sistema"                                                               , subsidiary: sucursal_83   , state: 'Pendiente'  , user_client: usuario_cliente_3)
 
-p turno_0.save()
-p turno_1.save()
-p turno_2.save()
-p turno_3.save()
-p turno_4.save()
-p turno_5.save()
-p turno_6.save()
-p turno_7.save()
-p turno_8.save()
-p turno_9.save()
-p turno_10.save()
-p turno_11.save()
-p turno_12.save()
-p turno_13.save()
+turno_0.save()
+turno_1.save()
+turno_2.save()
+turno_3.save()
+turno_4.save()
+turno_5.save()
+turno_6.save()
+turno_7.save()
+turno_8.save()
+turno_9.save()
+turno_10.save()
+turno_11.save()
+turno_12.save()
+turno_13.save()
 
 puts "Se cargaron los turnos con exito"
 
