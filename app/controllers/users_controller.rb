@@ -63,12 +63,12 @@ class UsersController < ApplicationController
 
   def actualizar_pass
     @user = User.find(params[:id])
-    password = user_param_password[:password]
-    password_confirmation = user_param_password[:password_confirmation]
-    @user.password = password
-    @user.password_confirmation = password_confirmation
+    #password = user_param_password[:password]
+    #password_confirmation = user_param_password[:password_confirmation]
+    #@user.password = password
+    #@user.password_confirmation = password_confirmation
     #
-    if @user.save()
+    if @user.update(user_param_password)
       flash[:success] = "Se actualizo la contraseña con exito"
     else
       errores = @user.errors.full_messages
