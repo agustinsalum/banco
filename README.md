@@ -53,7 +53,7 @@ Se recomienda el uso de linux, el sistema operativo recomendable es:
 1. Clonamos el repositorio
 
 ```
-git clone https://github.com/agustinsalum/banco.git
+git clone git@github.com:agustinsalum/banco.git
 ```
 
 2. Acceder a la carpeta clonada
