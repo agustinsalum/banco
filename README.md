@@ -37,7 +37,7 @@ Ademas de las gemas por defecto, se instalaron las siguientes gemas adicionales:
 
 Se recomienda tener instalado en su maquina local las siguentes versiones de las tecnologias nombradas a continuacion:
 
-* Ruby (3.1.2)
+* Ruby (3.1.6)
 
 * Rails (7.0.4)
 
